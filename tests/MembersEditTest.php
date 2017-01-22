@@ -4,7 +4,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class MembersEditTest extends TestCase
 {
-//    use DatabaseTransactions;
+    use DatabaseTransactions;
 
     public function testMemberCanBeEdited()
     {
