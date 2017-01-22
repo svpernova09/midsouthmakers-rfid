@@ -11,13 +11,19 @@ class Member extends Model
 
     protected $primaryKey = 'key';
 
+    // because we have camel case columns
     public static $snakeAttributes = false;
 
+    // because we don't have created/updated cols
+    public $timestamps = false;
+
+    // Convert to Carbon
     public function getDateCreatedAttribute($value)
     {
         return Carbon::createfromTimestamp((int)$value, 'America/Chicago');
     }
 
+    // Convert to Carbon
     public function getLastLoginAttribute($value)
     {
         return Carbon::createfromTimestamp((int)$value, 'America/Chicago');

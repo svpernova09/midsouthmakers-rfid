@@ -7,6 +7,10 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         Welcome
+                        <p>
+                            If you don't know what this is, you might have
+                            stumbled into something you don't need.
+                        </p>
                     </div>
                 </div>
             </div>

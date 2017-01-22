@@ -41,9 +41,12 @@
                                 <td>{{ $member->dateCreated }}</td>
                                 <td>{{ $member->lastLogin }}</td>
                                 <td>
-                                    <button class="btn btn-default">
-                                        <span class="glyphicon glyphicon-pencil"></span> Edit
-                                    </button></td>
+                                    <a href="/members/{{ $member->key }}/edit">
+                                        <button class="btn btn-default">
+                                            <span class="glyphicon glyphicon-pencil"></span> Edit
+                                        </button>
+                                    </a>
+                                </td>
                             </tr>
                             @endforeach
                             </tbody>

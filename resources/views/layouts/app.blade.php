@@ -59,13 +59,13 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        @if(Auth::user()->admin)
+                                     @if(Auth::user()->admin)
+                                        <li>
                                         <a href="{{ url('/members') }}">
                                             Members
                                         </a>
-                                        @endif
-                                    </li>
+                                        </li>
+                                    @endif
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
@@ -84,6 +84,7 @@
                 </div>
             </div>
         </nav>
+        @include('partials.notifications')
 
         @yield('content')
     </div>
