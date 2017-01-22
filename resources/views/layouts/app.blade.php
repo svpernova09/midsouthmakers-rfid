@@ -60,9 +60,11 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        @if(Auth::user()->admin)
                                         <a href="{{ url('/members') }}">
                                             Members
                                         </a>
+                                        @endif
                                     </li>
                                     <li>
                                         <a href="{{ url('/logout') }}"
