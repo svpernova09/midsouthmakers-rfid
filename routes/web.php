@@ -25,3 +25,4 @@ Route::get('/home', 'HomeController@index');
 Route::get('/members', 'MemberController@index');
 Route::get('/members/{key}/edit', 'MemberController@edit');
 Route::post('/members/{key}', 'MemberController@update');
+Route::get('/log-viewer', 'LogViewerController@index');
