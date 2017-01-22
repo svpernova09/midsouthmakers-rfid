@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MemberUpdateRequest;
 use App\Member;
+use Illuminate\Http\RedirectResponse;
 
 
 class MemberController extends Controller
@@ -28,7 +29,6 @@ class MemberController extends Controller
     public function update(MemberUpdateRequest $request)
     {
         $member = Member::find($request->key);
-        $member->key = $request->key;
         $member->ircName = $request->ircName;
         $member->spokenName = $request->spokenName;
         $member->isAdmin = $request->isAdmin;
@@ -36,6 +36,6 @@ class MemberController extends Controller
 
         $member->save();
 
-        return view('members.index')->with('members', Member::all());
+        return redirect()->action('MemberController@index');
     }
 }

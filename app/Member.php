@@ -11,6 +11,9 @@ class Member extends Model
 
     protected $primaryKey = 'key';
 
+    // no auto incrementing the PK
+    public $incrementing = false;
+
     // because we have camel case columns
     public static $snakeAttributes = false;
 

@@ -25,7 +25,6 @@ class MemberUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'key' => 'required|exists:users,key',
             'ircName' => 'required|string',
             'spokenName' => 'required|string',
             'isAdmin' => 'required|boolean',

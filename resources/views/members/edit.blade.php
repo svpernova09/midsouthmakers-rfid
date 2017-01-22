@@ -11,10 +11,6 @@
                         <form method="POST" action="/members/{{ $member->key }}">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <label for="key">Key</label>
-                                <input type="text" class="form-control" name="key" placeholder="Key" value="{{ $member->key }}">
-                            </div>
-                            <div class="form-group">
                                 <label for="ircName">IRC/Nick Name</label>
                                 <input type="text" class="form-control" name="ircName" placeholder="IRC/Nick Name" value="{{ $member->ircName }}">
                             </div>
