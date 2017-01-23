@@ -7,6 +7,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Log Viewer</div>
                     <div class="panel-body">
+                        <p>
+                            Logs are synced here every hour.
+                        </p>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>

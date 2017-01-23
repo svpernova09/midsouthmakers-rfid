@@ -7,6 +7,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Members</div>
                     <div class="panel-body">
+                        <a href="{{ url('/members/create') }}">
+                            <button class="btn btn-primary">Create Member</button>
+                        </a>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
