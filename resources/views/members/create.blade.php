@@ -7,6 +7,12 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Create Member</div>
                     <div class="panel-body">
+                        <div class="alert-danger">
+                            <span class="glyphicon glyphicon-warning-sign"></span>
+                            This works in <strong>theory</strong>. But has not yet been real world tested. Proceed with Caution.
+                            Worst case: user will not work and will need to be deleted.
+                            <span class="glyphicon glyphicon-warning-sign"></span>
+                        </div>
                         <div class="table-responsive">
                             <form method="POST" action="/members">
                                 {{ csrf_field() }}
