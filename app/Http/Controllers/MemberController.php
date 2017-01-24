@@ -53,7 +53,7 @@ class MemberController extends Controller
     public function doCreate(MemberCreateRequest $request)
     {
         $member = new \App\Member;
-        $member->key = $request->key;
+        $member->key = $this->cleanKey($request->key);
         $member->hash = $this->hashPin($request->pin);
         $member->ircName = $request->ircName;
         $member->spokenName = $request->spokenName;
@@ -72,5 +72,12 @@ class MemberController extends Controller
         $salt = '$1$' . substr(microtime(),0,8);
 
         return crypt($pin, $salt);
+    }
+
+    public function cleanKey($key){
+        $int_key = intval($key);
+        $clean_key = $int_key & 0x00FFFFFF;
+
+        return $clean_key;
     }
 }
