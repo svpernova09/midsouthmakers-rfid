@@ -71,7 +71,7 @@ class MemberController extends Controller
     {
         $salt = '$1$' . substr(microtime(),0,8);
 
-        return password_hash($pin, $salt);
+        return crypt($pin, $salt);
     }
 
     public function cleanKey($key){
