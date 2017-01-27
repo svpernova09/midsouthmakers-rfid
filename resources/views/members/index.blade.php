@@ -27,24 +27,24 @@
                             @foreach($members as $member)
                             <tr>
                                 <td>{{ $member->key }}</td>
-                                <td>{{ $member->ircName }}</td>
-                                <td>{{ $member->spokenName }}</td>
+                                <td>{{ $member->irc_name }}</td>
+                                <td>{{ $member->spoken_name }}</td>
                                 <td>
                                     @if($member->isAdmin)
                                         <span class="glyphicon glyphicon-ok"></span>
                                     @endif
                                 </td>
                                 <td>
-                                    @if($member->isActive)
+                                    @if($member->active)
                                         <span class="glyphicon glyphicon-plus-sign"></span>
                                     @else
                                         <span class="glyphicon glyphicon-minus-sign"></span>
                                     @endif
                                 </td>
-                                <td>{{ $member->dateCreated }}</td>
-                                <td>{{ $member->lastLogin }}</td>
+                                <td>{{ $member->date_created }}</td>
+                                <td>{{ $member->last_login }}</td>
                                 <td>
-                                    <a href="/members/{{ $member->key }}/edit">
+                                    <a href="/members/{{ $member->id }}/edit">
                                         <button class="btn btn-default">
                                             <span class="glyphicon glyphicon-pencil"></span> Edit
                                         </button>

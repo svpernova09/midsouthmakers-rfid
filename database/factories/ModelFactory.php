@@ -25,16 +25,17 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Member::class, function (Faker\Generator $faker) {
+    $users = \App\User::all();
 
     return [
         'key' => $faker->numberBetween(0,999999),
         'hash' => '$1$OSgsFlWE$79omYL8JCk0X0JLvREfjm1',
-        'spokenName' => $faker->name,
-        'ircName' => $faker->name,
-        'addedBy' => $faker->numberBetween(0,999999),
-        'dateCreated' => Carbon\Carbon::now()->timestamp,
-        'lastLogin' => Carbon\Carbon::now()->timestamp,
-        'isActive' => 1,
-        'isAdmin' => 0,
+        'spoken_name' => $faker->name,
+        'irc_name' => $faker->name,
+        'added_by' => $users->random()->id,
+        'date_created' => Carbon\Carbon::now(),
+        'last_login' => Carbon\Carbon::now(),
+        'active' => 1,
+        'admin' => 0,
     ];
 });

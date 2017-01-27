@@ -1,5 +1,8 @@
 <?php
 
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class MembersCreateTest extends TestCase
@@ -13,13 +16,13 @@ class MembersCreateTest extends TestCase
         $user->save();
 
         $this->actingAs($user)
-            ->visit('/members/create')
+            ->get('/members/create')
             ->type('123456', 'key')
             ->type('1111', 'pin')
-            ->type('New Member', 'ircName')
-            ->type('New Member Name', 'spokenName')
-            ->select(true, 'isAdmin')
-            ->select(true, 'isActive')
+            ->type('New Member', 'irc_name')
+            ->type('New Member Name', 'spoken_name')
+            ->select(true, 'admin')
+            ->select(true, 'active')
             ->press('Submit')
             ->seePageIs('/members')
             ->see('New Member')
@@ -34,11 +37,11 @@ class MembersCreateTest extends TestCase
         $user->save();
 
         $this->actingAs($user)
-            ->visit('/members/create')
+            ->get('/members/create')
             ->type('', 'key')
             ->type('', 'pin')
             ->type('', 'ircName')
-            ->type('', 'spokenName')
+            ->type('', 'spoken_name')
             ->press('Submit')
             ->seePageIs('/members/create')
             ->see('The key field is required')

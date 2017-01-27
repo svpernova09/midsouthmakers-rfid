@@ -23,13 +23,13 @@ class LogViewerController extends Controller
                 // Get the user ID
                 $entry = explode(' ', $array[1]);
                 $member_key = trim(array_pop($entry));
-                $member = Member::find($member_key);
+                $member = Member::where('key', $member_key)->first();
 
                 if ($member)
                 {
                     $log_entries[] = [
                         'date' => $date->toDayDateTimeString(),
-                        'ircName' => $member->ircName,
+                        'irc_name' => $member->irc_name,
                         'result' => $entry[1],
                     ];
                 }

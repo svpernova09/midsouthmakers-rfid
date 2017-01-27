@@ -25,22 +25,22 @@
                                     <input type="text" class="form-control" name="pin" placeholder="Pin" value="{{ old('pin') }}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="ircName">IRC/Nick Name</label>
-                                    <input type="text" class="form-control" name="ircName" placeholder="IRC/Nick Name" value="{{ old('ircName') }}">
+                                    <label for="irc_name">IRC/Nick Name</label>
+                                    <input type="text" class="form-control" name="irc_name" placeholder="IRC/Nick Name" value="{{ old('irc_name') }}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="spokenName">Name</label>
-                                    <input type="text" class="form-control" name="spokenName" placeholder="Name" value="{{ old('spokenName') }}">
+                                    <label for="spoken_name">Name</label>
+                                    <input type="text" class="form-control" name="spoken_name" placeholder="Name" value="{{ old('spoken_name') }}">
                                 </div>
                                 <div class="checkbox">
                                     Is Admin
-                                    <label class="radio-inline"><input type="radio" name="isAdmin" value="1">Yes</label>
-                                    <label class="radio-inline"><input type="radio" name="isAdmin" value="0" checked>No</label>
+                                    <label class="radio-inline"><input type="radio" name="admin" value="1">Yes</label>
+                                    <label class="radio-inline"><input type="radio" name="admin" value="0" checked>No</label>
                                 </div>
                                 <div class="checkbox">
                                     Is Active
-                                    <label class="radio-inline"><input type="radio" name="isActive" value="1" checked="checked">Yes</label>
-                                    <label class="radio-inline"><input type="radio" name="isActive" value="0">No</label>
+                                    <label class="radio-inline"><input type="radio" name="active" value="1" checked="checked">Yes</label>
+                                    <label class="radio-inline"><input type="radio" name="active" value="0">No</label>
                                 </div>
                                 <button type="submit" class="btn btn-default">Submit</button>
                             </form>

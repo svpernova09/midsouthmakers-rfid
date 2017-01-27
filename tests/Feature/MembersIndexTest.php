@@ -1,5 +1,8 @@
 <?php
 
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class MembersIndexTest extends TestCase
@@ -15,10 +18,10 @@ class MembersIndexTest extends TestCase
 
 
         $this->actingAs($user)
-            ->visit('/members')
+            ->get('/members')
             ->see($member->key)
-            ->see($member->ircName)
-            ->see($member->spokenName);
+            ->see($member->irc_name)
+            ->see($member->spoken_name);
 
         $this->assertResponseOk();
     }
@@ -28,7 +31,7 @@ class MembersIndexTest extends TestCase
         $user = factory(App\User::class)->create();
 
         $this->actingAs($user)
-            ->visit('/members')
+            ->get('/members')
             ->seePageIs('/');
     }
 

@@ -25,10 +25,10 @@ class MemberUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'ircName' => 'required|string',
-            'spokenName' => 'required|string',
-            'isAdmin' => 'required|boolean',
-            'isActive' => 'required|boolean',
+            'irc_name' => 'required|string',
+            'spoken_name' => 'required|string',
+            'admin' => 'required|boolean',
+            'active' => 'required|boolean',
         ];
     }
 }

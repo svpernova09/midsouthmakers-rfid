@@ -22,12 +22,12 @@ class MemberController extends Controller
         return view('members.index')->with('members', Member::all());
     }
 
-    public function edit(Request $request, $key)
+    public function edit(Request $request, $id)
     {
-        $member = Member::where('key', $key)->first();
+        $member = Member::find($id);
 
         if (!$member) {
-            throw new \Exception('Invalid key');
+            throw new \Exception('Invalid Member');
         }
         return view('members.edit')->with('member', $member);
     }
@@ -35,10 +35,10 @@ class MemberController extends Controller
     public function update(MemberUpdateRequest $request)
     {
         $member = Member::find($request->key);
-        $member->ircName = $request->ircName;
-        $member->spokenName = $request->spokenName;
-        $member->isAdmin = $request->isAdmin;
-        $member->isActive = $request->isActive;
+        $member->irc_name = $request->irc_name;
+        $member->spoken_name = $request->spoken_name;
+        $member->admin = $request->admin;
+        $member->active = $request->active;
 
         $member->save();
 
@@ -55,12 +55,12 @@ class MemberController extends Controller
         $member = new \App\Member;
         $member->key = $this->cleanKey($request->key);
         $member->hash = $this->hashPin($request->pin);
-        $member->ircName = $request->ircName;
-        $member->spokenName = $request->spokenName;
-        $member->isAdmin = $request->isAdmin;
-        $member->isActive = $request->isActive;
-        $member->addedBy = 12345;
-        $member->lastLogin = '';
+        $member->irc_name = $request->irc_name;
+        $member->spoken_name = $request->spoken_name;
+        $member->admin = $request->admin;
+        $member->active = $request->active;
+        $member->added_by = \Auth::user()->id;
+        $member->last_login = '';
         $member->dateCreated = Carbon::now('America/Chicago')->timestamp;
         $member->save();
 

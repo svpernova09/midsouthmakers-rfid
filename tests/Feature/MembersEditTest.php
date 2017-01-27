@@ -1,5 +1,8 @@
 <?php
 
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class MembersEditTest extends TestCase
@@ -14,11 +17,11 @@ class MembersEditTest extends TestCase
         $user->save();
 
         $this->actingAs($user)
-            ->visit('/members/' . $member->key . '/edit')
-            ->type('IRC Name', 'ircName')
-            ->type('Name', 'spokenName')
-            ->select(true, 'isAdmin')
-            ->select(true, 'isActive')
+            ->get('/members/' . $member->id . '/edit')
+            ->type('IRC Name', 'irc_name')
+            ->type('Name', 'spoken_name')
+            ->select(true, 'admin')
+            ->select(true, 'active')
             ->press('Submit')
             ->seePageIs('/members')
             ->see('IRC name')
@@ -35,11 +38,11 @@ class MembersEditTest extends TestCase
         $user->save();
 
         $this->actingAs($user)
-            ->visit('/members/' . $member->key . '/edit')
-            ->type('', 'ircName')
-            ->type('', 'spokenName')
+            ->get('/members/' . $member->id . '/edit')
+            ->type('', 'irc_name')
+            ->type('', 'spoken_name')
             ->press('Submit')
-            ->seePageIs('/members/' . $member->key . '/edit')
+            ->seePageIs('/members/' . $member->id . '/edit')
             ->see('The irc name field is required')
             ->see('The spoken name field is required');
     }

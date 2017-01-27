@@ -27,10 +27,10 @@ class MemberCreateRequest extends FormRequest
         return [
             'key' => 'required|numeric|unique:users,key',
             'pin' => 'required|numeric',
-            'ircName' => 'required|string',
-            'spokenName' => 'required|string',
-            'isAdmin' => 'required|boolean',
-            'isActive' => 'required|boolean',
+            'irc_name' => 'required|string',
+            'spoken_name' => 'required|string',
+            'admin' => 'required|boolean',
+            'active' => 'required|boolean',
         ];
     }
 }
