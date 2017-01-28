@@ -8,7 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    <passport-personal-access-tokens></passport-personal-access-tokens>
                 </div>
             </div>
         </div>
