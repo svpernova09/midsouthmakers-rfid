@@ -14,7 +14,7 @@ class MembersIndexTest extends BrowserKitTest
         $user = factory(App\User::class)->create();
         $user->admin = true;
         $user->save();
-        
+
         $this->actingAs($user)
             ->visit('/members')
             ->see($member->key)
