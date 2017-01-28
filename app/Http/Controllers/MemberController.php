@@ -60,8 +60,8 @@ class MemberController extends Controller
         $member->admin = $request->admin;
         $member->active = $request->active;
         $member->added_by = \Auth::user()->id;
-        $member->last_login = '';
-        $member->dateCreated = Carbon::now('America/Chicago')->timestamp;
+        $member->last_login = Carbon::now('America/Chicago');
+        $member->date_created = Carbon::now('America/Chicago');
         $member->save();
 
         return redirect()->action('MemberController@index');

@@ -1,11 +1,10 @@
 <?php
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class MembersEditTest extends TestCase
+class MembersEditTest extends BrowserKitTest
 {
     use DatabaseTransactions;
 
@@ -17,7 +16,7 @@ class MembersEditTest extends TestCase
         $user->save();
 
         $this->actingAs($user)
-            ->get('/members/' . $member->id . '/edit')
+            ->visit('/members/' . $member->id . '/edit')
             ->type('IRC Name', 'irc_name')
             ->type('Name', 'spoken_name')
             ->select(true, 'admin')
@@ -38,7 +37,7 @@ class MembersEditTest extends TestCase
         $user->save();
 
         $this->actingAs($user)
-            ->get('/members/' . $member->id . '/edit')
+            ->visit('/members/' . $member->id . '/edit')
             ->type('', 'irc_name')
             ->type('', 'spoken_name')
             ->press('Submit')

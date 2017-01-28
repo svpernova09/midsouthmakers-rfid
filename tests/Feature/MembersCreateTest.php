@@ -1,11 +1,10 @@
 <?php
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class MembersCreateTest extends TestCase
+class MembersCreateTest extends BrowserKitTest
 {
     use DatabaseTransactions;
 
@@ -16,7 +15,7 @@ class MembersCreateTest extends TestCase
         $user->save();
 
         $this->actingAs($user)
-            ->get('/members/create')
+            ->visit('/members/create')
             ->type('123456', 'key')
             ->type('1111', 'pin')
             ->type('New Member', 'irc_name')
@@ -27,7 +26,6 @@ class MembersCreateTest extends TestCase
             ->seePageIs('/members')
             ->see('New Member')
             ->see('New Member Name');
-
     }
 
     public function testFieldsAreRequired()
@@ -37,10 +35,10 @@ class MembersCreateTest extends TestCase
         $user->save();
 
         $this->actingAs($user)
-            ->get('/members/create')
+            ->visit('/members/create')
             ->type('', 'key')
             ->type('', 'pin')
-            ->type('', 'ircName')
+            ->type('', 'irc_name')
             ->type('', 'spoken_name')
             ->press('Submit')
             ->seePageIs('/members/create')

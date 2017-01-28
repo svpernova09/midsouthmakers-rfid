@@ -25,7 +25,7 @@ class MemberCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'key' => 'required|numeric|unique:users,key',
+            'key' => 'required|numeric|unique:members,key',
             'pin' => 'required|numeric',
             'irc_name' => 'required|string',
             'spoken_name' => 'required|string',
