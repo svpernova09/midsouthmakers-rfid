@@ -60,6 +60,7 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 @if(Auth::user()->admin)
+                                    <li><a href="{{ url('/home') }}">Home</a></li>
                                     <li><a href="{{ url('/log-viewer') }}">Log Viewer</a></li>
                                     <li><a href="{{ url('/members') }}">Members</a></li>
                                     <li><a href="{{ url('/users') }}">Users</a></li>
