@@ -8,7 +8,9 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
+                    @if(Auth::user()->admin)
                     <passport-personal-access-tokens></passport-personal-access-tokens>
+                    @endif
                 </div>
             </div>
         </div>
