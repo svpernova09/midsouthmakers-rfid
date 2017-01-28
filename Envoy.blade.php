@@ -6,5 +6,6 @@ php artisan down
 git pull origin master
 composer install --no-dev
 php artisan migrate --force
+npm run production
 php artisan up
 @endtask

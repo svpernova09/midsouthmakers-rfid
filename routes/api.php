@@ -20,3 +20,15 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/members', function (Request $request) {
     return \App\Member::all();
 });
+
+Route::middleware('auth:api')->get('/members/{id}', function (Request $request) {
+    return \App\Member::find($request->id);
+});
+
+Route::middleware('auth:api')->get('/users/{id}', function (Request $request) {
+    return \App\User::find($request->id);
+});
+
+Route::middleware('auth:api')->get('/fresh-and-clean', function (Request $request) {
+    return ['status' => false];
+});
