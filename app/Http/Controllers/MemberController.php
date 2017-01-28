@@ -54,7 +54,7 @@ class MemberController extends Controller
     {
         $member = new \App\Member;
         $member->key = $request->key;
-        $member->hash = sha1($pin);
+        $member->hash = sha1($request->pin);
         $member->irc_name = $request->irc_name;
         $member->spoken_name = $request->spoken_name;
         $member->admin = $request->admin;
