@@ -13,12 +13,19 @@ use Illuminate\Http\Request;
 |
 */
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
-
 Route::middleware('auth:api')->get('/members', function (Request $request) {
-    return \App\Member::all();
+    $members = Cache::get('members', function () {
+        $results =  [
+            'timestamp' => \Carbon\Carbon::now(),
+            'members' => \App\Member::all(),
+        ];
+
+        \Cache::put('members', $results, 10080);
+
+        return $results;
+    });
+
+    return $members;
 });
 
 Route::middleware('auth:api')->get('/members/{id}', function (Request $request) {
@@ -30,5 +37,7 @@ Route::middleware('auth:api')->get('/users/{id}', function (Request $request) {
 });
 
 Route::middleware('auth:api')->get('/fresh-and-clean', function (Request $request) {
-    return ['status' => false];
+    return ['status' => 'NYI'];
 });
+
+Route::middleware('auth:api')->post('/login-attempt', 'LoginAttemptController@create');
