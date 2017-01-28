@@ -15,7 +15,7 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('key')->unique();
+            $table->integer('key')->index();
             $table->string('hash');
             $table->string('irc_name');
             $table->string('spoken_name');
