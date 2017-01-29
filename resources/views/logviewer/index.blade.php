@@ -8,6 +8,9 @@
                     <div class="panel-heading">Log Viewer</div>
                     <div class="panel-body">
                         <p>
+                            Last Modified: {{ $last_modified }}
+                        </p>
+                        <p>
                             Logs are synced here every hour.
                         </p>
                     <div class="table-responsive">

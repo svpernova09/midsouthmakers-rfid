@@ -12,6 +12,8 @@ class LogViewerController extends Controller
     {
         $log_entries = [];
         $log = storage_path('rfid.log');
+        $last_modified =  Carbon::createFromTimestamp(filemtime($log), 'America/Chicago')->toDateTimeString();
+
         $handle = fopen($log, "r");
         if ($handle) {
             while (($line = fgets($handle)) !== false) {
@@ -37,7 +39,9 @@ class LogViewerController extends Controller
 
             fclose($handle);
 
-            return view('logviewer.index')->with('log_entries', array_reverse($log_entries));
+            return view('logviewer.index')
+                ->with('log_entries', array_reverse($log_entries))
+                ->with('last_modified', $last_modified);
         }
     }
 }
