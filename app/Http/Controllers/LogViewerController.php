@@ -11,6 +11,7 @@ class LogViewerController extends Controller
     public function index()
     {
         $log_entries = [];
+        $stats = [];
         $log = storage_path('rfid.log');
         $last_modified =  Carbon::createFromTimestamp(filemtime($log), 'America/Chicago')->toDateTimeString();
 
@@ -29,11 +30,19 @@ class LogViewerController extends Controller
 
                 if ($member)
                 {
+                    if (!array_key_exists($member->irc_name, $stats)) {
+                        $stats[$member->irc_name] = 0;
+                    }
+
                     $log_entries[] = [
                         'date' => $date->toDayDateTimeString(),
                         'irc_name' => $member->irc_name,
                         'result' => $entry[1],
                     ];
+
+                    if ($entry[1] == 'granted') {
+                        ++$stats[$member->irc_name];
+                    }
                 }
             }
 
@@ -41,7 +50,8 @@ class LogViewerController extends Controller
 
             return view('logviewer.index')
                 ->with('log_entries', array_reverse($log_entries))
-                ->with('last_modified', $last_modified);
+                ->with('last_modified', $last_modified)
+                ->with('stats', $stats);
         }
     }
 }
