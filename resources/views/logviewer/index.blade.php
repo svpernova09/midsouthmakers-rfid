@@ -23,7 +23,7 @@
                             @foreach($log_entries as $log)
                             <tr>
                                 <td>{{ $log['date'] }}</td>
-                                <td>{{ $log['ircName'] }}</td>
+                                <td>{{ $log['irc_name'] }}</td>
                                 <td>
                                     @if($log['result'] == 'granted')
                                         <span class="glyphicon glyphicon-plus-sign"></span>
