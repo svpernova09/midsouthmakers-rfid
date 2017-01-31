@@ -1,5 +1,6 @@
 <?php
 
+use App\Tests\BrowserKitTest;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

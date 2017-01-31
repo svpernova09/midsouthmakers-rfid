@@ -30,7 +30,7 @@
                                 <td>{{ $member->irc_name }}</td>
                                 <td>{{ $member->spoken_name }}</td>
                                 <td>
-                                    @if($member->isAdmin)
+                                    @if($member->admin)
                                         <span class="glyphicon glyphicon-ok"></span>
                                     @endif
                                 </td>
