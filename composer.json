@@ -29,7 +29,11 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "classmap": [
+            "tests/TestCase.php",
+            "tests/BrowserKitTest.php"
+        ]
     },
     "scripts": {
         "post-root-package-install": [

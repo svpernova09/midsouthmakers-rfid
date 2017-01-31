@@ -25,3 +25,5 @@ Route::get('/members/{key}/edit', 'MemberController@edit');
 Route::post('/members/{key}', 'MemberController@update');
 Route::get('/log-viewer', 'LogViewerController@index');
 Route::get('/users', 'UserController@index');
+Route::get('/member-connect', 'HomeController@memberConnect');
+Route::post('/member-connect', 'HomeController@doMemberConnect');

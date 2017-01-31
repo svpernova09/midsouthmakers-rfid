@@ -65,6 +65,7 @@
                                     <li><a href="{{ url('/members') }}">Members</a></li>
                                     <li><a href="{{ url('/users') }}">Users</a></li>
                                 @endif
+                                    <li><a href="{{ url('/member-connect') }}">Member Connect</a></li>
                                 <li>
                                     <a href="{{ url('/logout') }}"
                                        onclick="event.preventDefault();

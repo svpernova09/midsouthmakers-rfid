@@ -29,7 +29,7 @@ $factory->define(App\Member::class, function (Faker\Generator $faker) {
 
     return [
         'key' => $faker->numberBetween(0,999999),
-        'hash' => '$1$OSgsFlWE$79omYL8JCk0X0JLvREfjm1',
+        'hash' => sha1('1111'),
         'spoken_name' => $faker->name,
         'irc_name' => $faker->name,
         'added_by' => $users->random()->id,
