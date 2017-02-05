@@ -3,7 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\CreateAdmin;
-use App\Console\Commands\ImportRecords;
+use App\Console\Commands\ParseLog;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         CreateAdmin::class,
-//        ImportRecords::class,
+        ParseLog::class,
     ];
 
     /**
@@ -27,8 +27,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+         $schedule->command('parse:log')
+                  ->hourly();
     }
 
     /**

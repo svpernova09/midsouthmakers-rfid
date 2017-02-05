@@ -25,10 +25,10 @@
                             <tbody>
                             @foreach($log_entries as $log)
                             <tr>
-                                <td>{{ $log['date'] }}</td>
-                                <td>{{ $log['irc_name'] }}</td>
+                                <td>{{ $log->timestamp }}</td>
+                                <td>{{ $log->member->irc_name }}</td>
                                 <td>
-                                    @if($log['result'] == 'granted')
+                                    @if($log->result == 'success')
                                         <span class="glyphicon glyphicon-plus-sign"></span>
                                     @else
                                         <span class="glyphicon glyphicon-minus-sign"></span>
@@ -38,6 +38,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                        {{ $log_entries->links() }}
                     </div>
                 </div>
             </div>

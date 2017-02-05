@@ -16,4 +16,9 @@ class Member extends Model
     {
         return $this->belongsTo('\App\Member');
     }
+
+    public function logins()
+    {
+        return $this->hasMany('\App\LoginAttempt', 'key', 'key');
+    }
 }
