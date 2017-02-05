@@ -14,7 +14,7 @@ class Member extends Model
 
     public function user()
     {
-        return $this->belongsTo('\App\Member');
+        return $this->belongsTo('\App\User');
     }
 
     public function logins()

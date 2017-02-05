@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
                 <div class="panel-body">
-                    @if(count(Auth::user()->members()) > 0)
+                    @if(count(Auth::user()->members) > 0)
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
