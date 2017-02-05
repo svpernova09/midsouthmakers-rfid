@@ -8,7 +8,7 @@
                 <div class="panel-heading">Member Connect</div>
 
                 <div class="panel-body">
-                    Connect your website account an RFID Door Token
+                    Connect your website account with a RFID Door Token
                     <form class="form-horizontal" role="form" method="POST" action="/member-connect">
                         {{ csrf_field() }}
                         <div class="form-group">
