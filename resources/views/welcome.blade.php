@@ -8,8 +8,8 @@
                     <div class="panel-body">
                         Welcome
                         <p>
-                            If you don't know what this is, you might have
-                            stumbled into something you don't need.
+                            Are you a member of Midsouth Makers?
+                            Register a new account to begin managing your RFID token.
                         </p>
                     </div>
                 </div>

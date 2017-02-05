@@ -10,6 +10,8 @@
                         <a href="{{ url('/members/create') }}">
                             <button class="btn btn-primary">Create Member</button>
                         </a>
+                        Changes made here are not immediately affected and may take an hour
+                        to be reflected at the space.
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
