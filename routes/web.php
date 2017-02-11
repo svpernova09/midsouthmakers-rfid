@@ -27,3 +27,7 @@ Route::get('/log-viewer', 'LogViewerController@index');
 Route::get('/users', 'UserController@index');
 Route::get('/member-connect', 'HomeController@memberConnect');
 Route::post('/member-connect', 'HomeController@doMemberConnect');
+Route::get('/sign-waiver', 'WaiverController@index');
+Route::get('/sign-waiver/individual', 'WaiverController@individual');
+Route::get('/sign-waiver/dependent', 'WaiverController@dependent');
+
