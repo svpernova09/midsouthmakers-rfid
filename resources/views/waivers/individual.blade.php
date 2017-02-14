@@ -7,7 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Sign Individual Waiver</div>
                     <div class="panel-body">
-                        <form method="POST" action="/sign-waver">
+                        <form method="POST" id="waiver" action="/sign-waiver">
                             {{ csrf_field() }}
                             <div id="waiver_content" class="waiver_content">
                                 <p>Between <input typ="text" name="between_name" size="35"> (your first and last name)
@@ -23,8 +23,6 @@
                                 <p>I affirm that I am 18 years of age or older and mentally competent to sign this
                                     liability release.</p>
                                 <p>Initials: <input typ="text" name="initial_3" size="4"></p>
-                                <br>
-                                <br>
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" class="form-control" name="name" placeholder="Your name"
@@ -58,6 +56,7 @@
                                 <div id="signature-pad" class="m-signature-pad">
                                     <div class="m-signature-pad--body">
                                         <canvas></canvas>
+                                        <input type="hidden" id="signature" name="signature">
                                     </div>
                                     <div class="m-signature-pad--footer">
                                         <div class="description">Sign and date above</div>
@@ -84,7 +83,6 @@
             var wrapper = document.getElementById("signature-pad"),
                 clearButton = wrapper.querySelector("[data-action=clear]"),
                 savePNGButton = wrapper.querySelector("[data-action=save-png]"),
-                saveSVGButton = wrapper.querySelector("[data-action=save-svg]"),
                 canvas = wrapper.querySelector("canvas"),
                 signaturePad;
 
@@ -114,7 +112,10 @@
                 if (signaturePad.isEmpty()) {
                     alert("Please provide signature first.");
                 } else {
-                    window.open(signaturePad.toDataURL());
+                    $('#signature').val(signaturePad.toDataURL());
+                    var data = $("#waiver").serialize();
+                    console.log(data);
+                    $("#waiver").submit();
                 }
             });
         });
