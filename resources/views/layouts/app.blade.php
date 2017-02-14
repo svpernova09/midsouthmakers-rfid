@@ -64,6 +64,7 @@
                                     <li><a href="{{ url('/log-viewer') }}">Log Viewer</a></li>
                                     <li><a href="{{ url('/members') }}">Members</a></li>
                                     <li><a href="{{ url('/users') }}">Users</a></li>
+                                    <li><a href="{{ url('/waivers/admin') }}">Waivers</a></li>
                                 @endif
                                     <li><a href="{{ url('/member-connect') }}">Member Connect</a></li>
                                 <li>

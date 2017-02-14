@@ -9,6 +9,7 @@ use App\Waiver;
 use Barryvdh\DomPDF\PDF;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class WaiverController extends Controller
@@ -16,6 +17,13 @@ class WaiverController extends Controller
     public function index()
     {
         return view('waivers.index');
+    }
+
+    public function admin()
+    {
+        $waivers = DB::table('waivers')->paginate(25);
+
+        return view('waivers.admin')->with('waivers', $waivers);
     }
 
     public function individual()

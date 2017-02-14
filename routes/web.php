@@ -31,4 +31,4 @@ Route::get('/sign-waiver', 'WaiverController@index');
 Route::post('/sign-waiver', 'WaiverController@saveIndividualWaiver');
 Route::get('/sign-waiver/individual', 'WaiverController@individual');
 Route::get('/sign-waiver/dependent', 'WaiverController@dependent');
-
+Route::get('/waivers/admin', 'WaiverController@admin');
