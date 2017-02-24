@@ -6,11 +6,11 @@ use App\Http\Requests\DependentWaiverRequest;
 use App\Http\Requests\IndividualWaiverRequest;
 use App\Mail\WaiverSigned;
 use App\Waiver;
-use Barryvdh\DomPDF\PDF;
 use Illuminate\Support\Facades\App;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Response;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class WaiverController extends Controller
 {
@@ -100,5 +100,21 @@ class WaiverController extends Controller
     public function emailWaiver($waiver)
     {
         Mail::to($waiver->email)->send(new WaiverSigned($waiver));
+    }
+
+    public function downloadWaiver($request)
+    {
+        $waiver = Waiver::find($request);
+
+        if (!$waiver) {
+            throw new BadRequestHttpException('Bad Request');
+        }
+
+        $file = storage_path('waivers/' . $waiver->id . '.pdf');
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+
+        return Response::download($file, 'MidsouthMakers-Waiver.pdf', $headers);
     }
 }

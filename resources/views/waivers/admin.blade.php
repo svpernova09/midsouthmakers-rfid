@@ -24,7 +24,9 @@
                                         <td>{{ $waiver->email }}</td>
                                         <td>{{ $waiver->between_name }}</td>
                                         <td>
-
+                                            <a href="{{ url('/waivers/download', $waiver->id) }}">
+                                                <span class="glyphicon glyphicon-save"></span>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
