@@ -66,7 +66,7 @@
                                     <div class="m-signature-pad--footer">
                                         <div class="description">Sign and date above</div>
                                         <div class="right">
-                                            <button type="button" class="button save" data-action="save-png">Save
+                                            <button type="button" id="save_btn" class="button save" data-action="save-png">Save
                                             </button>
                                             <button type="button" class="button clear" data-action="clear">Clear
                                             </button>
@@ -117,6 +117,7 @@
                 if (signaturePad.isEmpty()) {
                     alert("Please provide signature first.");
                 } else {
+//                    $('#signature-pad > div.m-signature-pad--footer > div.right > button.button.save').prop('disabled', true);
                     $('#signature').val(signaturePad.toDataURL());
                     var data = $("#waiver").serialize();
                     console.log(data);
