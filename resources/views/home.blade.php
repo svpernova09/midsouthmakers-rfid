@@ -40,7 +40,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $member->date_created }}</td>
-                                        <td>{{ $member->last_login }}</td>
+                                        <td>{{ $member->last_login_record }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

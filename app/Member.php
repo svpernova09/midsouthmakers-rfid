@@ -21,4 +21,9 @@ class Member extends Model
     {
         return $this->hasMany('\App\LoginAttempt', 'key', 'key');
     }
+
+    public function getLastLoginRecordAttribute()
+    {
+        return $this->logins->first()->orderBy('timestamp', 'desc')->limit(1)->first()->timestamp;
+    }
 }
