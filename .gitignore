@@ -8,3 +8,5 @@ Homestead.yaml
 .env
 *.sqlit*
 storage/rfid.log
+.vagrant
+users.csv
