@@ -7,13 +7,15 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Members</div>
                     <div class="panel-body">
-                        <a href="{{ url('/members/create') }}">
-                            <button class="btn btn-primary">Create Member</button>
-                        </a>
-                        Changes made here are not immediately affected and may take an hour
-                        to be reflected at the space.
+                        <div class="panel-body">
+                            <a href="{{ url('/members/create') }}">
+                                <button class="btn btn-primary">Create Member</button>
+                            </a>
+                            Changes made here are not immediately affected and may take an hour
+                            to be reflected at the space.
+                        </div>
                     <div class="table-responsive">
-                        <table class="table table-striped">
+                        <table id="members" class="table table-striped">
                             <thead>
                             <tr>
                                 <th>Key</th>
@@ -23,6 +25,7 @@
                                 <th>Active</th>
                                 <th>Date Created</th>
                                 <th>Last Login</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -71,4 +74,14 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script type="application/javascript">
+    $(document).ready(function() {
+        $('#members').DataTable({
+            paging: false
+        });
+    });
+</script>
 @endsection
