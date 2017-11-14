@@ -27,7 +27,17 @@
                             </thead>
                             <tbody>
                             @foreach($members as $member)
-                            <tr>
+                                @if($member->active)
+                                    @if($member->admin)
+                                        <tr class="success">
+                                    @else
+                                        <tr>
+                                    @endif
+                                @else
+                                    <tr class="danger">
+                                @endif
+
+
                                 <td>{{ $member->key }}</td>
                                 <td>{{ $member->irc_name }}</td>
                                 <td>{{ $member->spoken_name }}</td>

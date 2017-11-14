@@ -40,7 +40,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $member->date_created }}</td>
-                                        
+
                                         @if($member->login_attemps)
                                             <td>{{ $member->last_login_record }}</td>
                                         @endif
