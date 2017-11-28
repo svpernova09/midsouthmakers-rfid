@@ -35,6 +35,7 @@ class IndividualWaiverRequest extends FormRequest
             'contact_name' => 'required',
             'contact_phone' => 'required',
             'signature' => 'required',
+            'birth_date' => 'required|date_format:"YY/MM/DD"',
         ];
     }
 
@@ -44,6 +45,7 @@ class IndividualWaiverRequest extends FormRequest
             'initial_1.same' => 'The initials must match.',
             'initial_2.same' => 'The initials must match.',
             'initial_3.same' => 'The initials must match.',
+            'birth_date.date_format' => 'Date of Birth does not match format "YY/MM/DD".',
         ];
     }
 }

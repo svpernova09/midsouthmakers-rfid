@@ -6,6 +6,7 @@ use App\Http\Requests\DependentWaiverRequest;
 use App\Http\Requests\IndividualWaiverRequest;
 use App\Mail\WaiverSigned;
 use App\Waiver;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -38,6 +39,8 @@ class WaiverController extends Controller
 
     public function saveIndividualWaiver(IndividualWaiverRequest $request)
     {
+        $birth_date = new Carbon($request->birth_date);
+
         $waiver = new Waiver();
         $waiver->between_name = $request->between_name;
         $waiver->initial_1 = $request->initial_1;
@@ -47,6 +50,7 @@ class WaiverController extends Controller
         $waiver->email = $request->email;
         $waiver->contact_name = $request->contact_name;
         $waiver->contact_phone = $request->contact_phone;
+        $waiver->birth_date = $birth_date->toDateTimeString();
         $waiver->signature = $request->signature;
         $waiver->save();
 

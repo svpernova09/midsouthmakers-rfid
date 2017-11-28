@@ -44,6 +44,11 @@
                                            value="{{ old('email') }}">
                                 </div>
                                 <div class="form-group">
+                                    <label for="birth_date">Date of Birth</label>
+                                    <input type="text" class="form-control" name="birth_date"
+                                           placeholder="YYYY/MM/DD" value="{{ old('birth_date') }}">
+                                </div>
+                                <div class="form-group">
                                     <label for="contact_name">Emergency Contact Name</label>
                                     <input type="text" class="form-control" name="contact_name"
                                            placeholder="Emergency Contact Name" value="{{ old('contact_name') }}">
