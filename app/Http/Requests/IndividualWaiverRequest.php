@@ -45,7 +45,7 @@ class IndividualWaiverRequest extends FormRequest
             'initial_1.same' => 'The initials must match.',
             'initial_2.same' => 'The initials must match.',
             'initial_3.same' => 'The initials must match.',
-            'birth_date.date_format' => 'Date of Birth does not match format "YY/MM/DD".',
+            'birth_date.date_format' => 'Date of Birth does not match format "YYYY/MM/DD".',
         ];
     }
 }
