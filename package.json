@@ -12,7 +12,7 @@
     "jquery": "^3.1.0",
     "laravel-mix": "^0.10.0",
     "lodash": "^4.16.2",
-    "vue": "^2.0.1"
+    "vue": "^2.5.13"
   },
   "dependencies": {
     "datatables.net": "^1.10.16",
