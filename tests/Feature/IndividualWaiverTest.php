@@ -30,13 +30,13 @@ class IndividualWaiverTest extends BrowserKitTest
                 'between_name' => 'John Doe',
                 'initial_1' => 'JD',
                 'name' => 'John Doe',
-                'address' => '1234 Nowhere St',
-                'phone' => '123-456-7890',
-                'email' => 'user@domain.com',
-                'birth_date' => '1980-01-24',
-                'contact_name' => 'Contact Name',
-                'contact_phone' => '987-654-3210',
-                'signature' => 'Signature Data',
+//                'address' => '1234 Nowhere St',
+//                'phone' => '123-456-7890',
+//                'email' => 'user@domain.com',
+//                'birth_date' => '1980-01-24',
+//                'contact_name' => 'Contact Name',
+//                'contact_phone' => '987-654-3210',
+//                'signature' => 'Signature Data',
             ]);
 
         $this->assertResponseOk();
