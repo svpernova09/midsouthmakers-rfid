@@ -35,7 +35,7 @@ class IndividualWaiverRequest extends FormRequest
             'contact_name' => 'required',
             'contact_phone' => 'required',
             'signature' => 'required',
-            'birth_date' => 'required|date_format:"YY/MM/DD"',
+            'birth_date' => 'required|date_format:"Y/m/d"',
         ];
     }
 
