@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class ApiTest extends TestCase
 {
-//    use DatabaseTransactions;
+    use DatabaseTransactions;
 
     public function setUp()
     {

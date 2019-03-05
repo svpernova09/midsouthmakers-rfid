@@ -24,7 +24,11 @@
                             </thead>
                             <tbody>
                             @foreach($log_entries as $log)
-                            <tr>
+                                @if($log->result == 'success')
+                                    <tr class="success">
+                                @else
+                                    <tr class="danger">
+                                @endif
                                 <td>{{ $log->timestamp }}</td>
                                 <td>{{ $log->member->irc_name }}</td>
                                 <td>
