@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\LoginAttempt;
+use App\Member;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginAttemptRequest;
@@ -16,6 +17,23 @@ class LoginAttemptController extends Controller
         $login->reason = $request->reason;
         $login->result = $request->result;
 
+        if($request->result === 'success') {
+            $this->updateLastLoginForMember($login->key);
+        }
+
         return ['status' => $login->save()];
+    }
+
+    private function updateLastLoginForMember($key)
+    {
+        try{
+            $member = Member::where('key', $key)->firstOrFail();
+
+            $member->last_login = date('Y-m-d');
+            $member->save();
+        } catch (\Exception $e) {
+            error_log($e->getMessage());
+        }
+
     }
 }
