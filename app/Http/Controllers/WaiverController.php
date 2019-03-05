@@ -55,7 +55,11 @@ class WaiverController extends Controller
         $waiver->save();
 
         $this->renderIndividualWaiver($waiver);
-        $this->emailWaiver($waiver);
+
+        if (env('DB_USERNAME') !== 'travis')
+        {
+            $this->emailWaiver($waiver);
+        }
 
         return redirect()->action('WaiverController@index');
     }
