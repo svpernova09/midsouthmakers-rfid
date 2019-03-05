@@ -98,7 +98,7 @@ Get a Member record by Id.
 
 ### GET `/api/users/{id}`
 
-Get a member record by Id.
+Get a user record by Id.
 
 ```
 {
