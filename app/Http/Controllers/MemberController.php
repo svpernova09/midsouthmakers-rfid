@@ -40,7 +40,16 @@ class MemberController extends Controller
         $member->admin = $request->admin;
         $member->active = $request->active;
 
-        $member->save();
+        if (isset($request->pin) && strlen($request->pin) === 4)
+        {
+            $member->hash = sha1($request->pin);
+        }
+
+        try {
+            $member->save();
+        } catch(\Exception $e) {
+            return redirect()->back()->withInput()->with('error', $e->getMessage());
+        }
 
         return redirect()->action('MemberController@index');
     }

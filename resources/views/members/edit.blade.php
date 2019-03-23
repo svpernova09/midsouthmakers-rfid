@@ -18,6 +18,10 @@
                                 <label for="spoken_name">Name</label>
                                 <input type="text" class="form-control" name="spoken_name" placeholder="Name" value="{{ $member->spoken_name }}">
                             </div>
+                            <div class="form-group">
+                                <label for="pin">PIN</label> (only use for updating, otherwise leave blank)
+                                <input type="text" class="form-control" name="pin" placeholder="pin" value="">
+                            </div>
                             <div class="checkbox">
                                 Is Admin
                                 @if($member->admin)
