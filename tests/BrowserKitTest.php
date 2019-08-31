@@ -11,7 +11,7 @@ abstract class BrowserKitTest extends BaseTestCase
      *
      * @var string
      */
-    public $baseUrl = 'http://localhost';
+    public $baseUrl = 'http://mmrfid.test';
 
     /**
      * Creates the application.

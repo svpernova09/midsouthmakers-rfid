@@ -10,18 +10,13 @@ class ApiTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function setUp()
-    {
-        parent::setUp();
-
-        $this->user = factory(User::class)->create();
-        $this->user->admin = true;
-        $this->user->save();
-    }
-
     public function testMembersEndpoint()
     {
-        $response = $this->actingAs($this->user, 'api')->json('GET', '/api/members', []);
+        $user = factory(\App\User::class)->create();
+        $user->admin = true;
+        $user->save();
+
+        $response = $this->actingAs($user, 'api')->json('GET', '/api/members', []);
 
         $response
             ->assertStatus(200)
@@ -34,8 +29,11 @@ class ApiTest extends TestCase
     public function testMemberGet()
     {
         $member = factory(Member::class)->create();
+        $user = factory(\App\User::class)->create();
+        $user->admin = true;
+        $user->save();
 
-        $response = $this->actingAs($this->user, 'api')->json('GET', '/api/members/' . $member->id, []);
+        $response = $this->actingAs($user, 'api')->json('GET', '/api/members/' . $member->id, []);
 
         $response
             ->assertStatus(200)
@@ -54,7 +52,7 @@ class ApiTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $response = $this->actingAs($this->user, 'api')->json('GET', '/api/users/' . $user->id, []);
+        $response = $this->actingAs($user, 'api')->json('GET', '/api/users/' . $user->id, []);
 
         $response
             ->assertStatus(200)
@@ -68,7 +66,10 @@ class ApiTest extends TestCase
 
     public function testLoginFailedAttempt()
     {
-        $response = $this->actingAs($this->user, 'api')->json('POST', '/api/login-attempt', [
+        $user = factory(\App\User::class)->create();
+        $user->admin = true;
+        $user->save();
+        $response = $this->actingAs($user, 'api')->json('POST', '/api/login-attempt', [
             'key'       => '123241234',
             'timestamp' => Carbon::now()->timestamp,
             'reason'    => 'Bad Key',
@@ -84,7 +85,10 @@ class ApiTest extends TestCase
 
     public function testLoginSuccessAttempt()
     {
-        $response = $this->actingAs($this->user, 'api')->json('POST', '/api/login-attempt', [
+        $user = factory(\App\User::class)->create();
+        $user->admin = true;
+        $user->save();
+        $response = $this->actingAs($user, 'api')->json('POST', '/api/login-attempt', [
             'key'       => '12314234',
             'timestamp' => Carbon::now()->timestamp,
             'reason'    => 'success',

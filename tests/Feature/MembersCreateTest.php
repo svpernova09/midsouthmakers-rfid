@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use App\Tests\BrowserKitTest;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -11,7 +12,7 @@ class MembersCreateTest extends BrowserKitTest
 
     public function testMemberCanBeCreated()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(User::class)->make();
         $user->admin = true;
         $user->save();
 
@@ -31,7 +32,7 @@ class MembersCreateTest extends BrowserKitTest
 
     public function testFieldsAreRequired()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(User::class)->create();
         $user->admin = true;
         $user->save();
 

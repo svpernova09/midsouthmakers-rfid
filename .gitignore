@@ -10,3 +10,4 @@ Homestead.yaml
 storage/rfid.log
 .vagrant
 users.csv
+.phpunit.result.cache
