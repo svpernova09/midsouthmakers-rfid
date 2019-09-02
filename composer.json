@@ -7,19 +7,19 @@
     "require": {
         "php": ">=7.2",
         "barryvdh/laravel-dompdf": "*",
-        "guzzlehttp/guzzle": "~6.0",
-        "laravel/framework": "5.8.*",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "~6.0",
+        "laravel/framework": "^6.0",
+        "laravel/helpers": "^1.1",
         "laravel/passport": "^7.0",
         "laravel/tinker": "~1.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
-        "laravel/browser-kit-testing": "5.1.*",
-        "laravel/envoy": "^1.5",
-        "laravel/homestead": "*",
-        "phpunit/phpunit": "~8.0"
+        "laravel/browser-kit-testing": "5.0.x-dev",
+        "laravel/homestead": "dev-release",
+        "phpunit/phpunit": "~8.3"
     },
     "autoload": {
         "classmap": [
@@ -57,7 +57,9 @@
         ]
     },
     "config": {
-        "preferred-install": "dist",
-        "sort-packages": true
-    }
+      "preferred-install": "dist",
+      "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
