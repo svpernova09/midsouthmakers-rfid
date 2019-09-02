@@ -12,7 +12,9 @@
                                 <thead>
                                 <tr>
                                     <th>Date</th>
+                                    <th>Key</th>
                                     <th>IRC Name</th>
+                                    <th>Spoken Name</th>
                                     <th>Result</th>
                                 </tr>
                                 </thead>
@@ -24,7 +26,9 @@
                                         <tr class="table-danger">
                                             @endif
                                             <td>{{ $log->timestamp }}</td>
+                                            <td>{{ $log->member->key }}</td>
                                             <td>{{ $log->member->irc_name }}</td>
+                                            <td>{{ $log->member->spoken_name }}</td>
                                             <td>
                                                 @if($log->result == 'success')
                                                     <i class="fas fa-plus"></i>
