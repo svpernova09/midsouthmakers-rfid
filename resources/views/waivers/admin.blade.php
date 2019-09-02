@@ -26,7 +26,7 @@
                                         <td>{{ $waiver->between_name }}</td>
                                         <td>
                                             <a href="{{ url('/waivers/download', $waiver->id) }}">
-                                                <span class="fab fa-save"></span>
+                                                <i class="fas fa-download"></i>
                                             </a>
                                         </td>
                                     </tr>
