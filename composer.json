@@ -16,9 +16,10 @@
     "require-dev": {
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
-        "phpunit/phpunit": "~8.0",
+        "laravel/browser-kit-testing": "5.1.*",
+        "laravel/envoy": "^1.5",
         "laravel/homestead": "*",
-        "laravel/browser-kit-testing": "5.1.*"
+        "phpunit/phpunit": "~8.0"
     },
     "autoload": {
         "classmap": [
