@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-                <div class="panel-body">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">Dashboard</div>
+
+                    <div class="card-body">
                     @if(count(Auth::user()->members) > 0)
                         <div class="table-responsive">
                             <table class="table table-striped">
@@ -29,14 +30,14 @@
                                         <td>{{ $member->spoken_name }}</td>
                                         <td>
                                             @if($member->admin)
-                                                <span class="glyphicon glyphicon-ok"></span>
+                                                <i class="fas fa-user-cog"></i>
                                             @endif
                                         </td>
                                         <td>
                                             @if($member->active)
-                                                <span class="glyphicon glyphicon-plus-sign"></span>
+                                                <i class="fas fa-plus"></i>
                                             @else
-                                                <span class="glyphicon glyphicon-minus-sign"></span>
+                                                <i class="fas fa-minus"></i>
                                             @endif
                                         </td>
                                         <td>{{ $member->date_created }}</td>
@@ -50,7 +51,7 @@
                             </table>
                     @endif
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     @if(Auth::user()->admin)
                     <passport-personal-access-tokens></passport-personal-access-tokens>
                     @endif

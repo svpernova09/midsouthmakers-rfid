@@ -2,16 +2,17 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Create Member</div>
-                    <div class="panel-body">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">Create Member</div>
+
+                    <div class="card-body">
                         <div class="alert-danger">
-                            <span class="glyphicon glyphicon-warning-sign"></span>
+                            <span class="fab fa-warning-sign"></span>
                             This works in <strong>theory</strong>. But has not yet been real world tested. Proceed with Caution.
                             Worst case: user will not work and will need to be deleted.
-                            <span class="glyphicon glyphicon-warning-sign"></span>
+                            <span class="fab fa-warning-sign"></span>
                         </div>
                         <div class="table-responsive">
                             <form method="POST" action="/members">
@@ -42,7 +43,7 @@
                                     <label class="radio-inline"><input type="radio" name="active" value="1" checked="checked">Yes</label>
                                     <label class="radio-inline"><input type="radio" name="active" value="0">No</label>
                                 </div>
-                                <button type="submit" class="btn btn-default">Submit</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
                     </div>

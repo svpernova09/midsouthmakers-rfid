@@ -2,11 +2,12 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Sign Individual Waiver</div>
-                    <div class="panel-body">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Sign Individual Waiver</div>
+
+                    <div class="card-body">
                         <form method="POST" id="waiver" action="/sign-waiver">
                             {{ csrf_field() }}
                             <div id="waiver_content" class="waiver_content">
@@ -82,6 +83,10 @@
     </div>
 @endsection
 @section('scripts')
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
     <script src="/js/signature_pad.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {

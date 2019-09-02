@@ -6,7 +6,9 @@
  */
 
 require('./bootstrap');
-require('datatables.net');
+
+// var dt = require( 'datatables.net' )();
+window.Vue = require('vue');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -28,9 +30,11 @@ require('datatables.net');
 
 Vue.component(
     'passport-personal-access-tokens',
-    require('./components/passport/PersonalAccessTokens.vue')
+    require('./components/passport/PersonalAccessTokens.vue').default
 );
 
 const app = new Vue({
     el: '#app'
 });
+
+$('.alert').alert();

@@ -2,11 +2,12 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Users</div>
-                    <div class="panel-body">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">Users</div>
+
+                    <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
@@ -25,7 +26,7 @@
                                 <td>{{ $user->email }}</td>
                                 <td>
                                     @if($user->admin)
-                                        <span class="glyphicon glyphicon-ok"></span>
+                                        <i class="fas fa-user-cog"></i>
                                     @endif
                                 </td>
                                 <td>{{ $user->created_at }}</td>

@@ -2,11 +2,12 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Sign Waiver</div>
-                    <div class="panel-body">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Sign Waiver</div>
+
+                    <div class="card-body">
                         <p>
                             All visitors to the MidsouthMakers location are required to sign a short waiver.
                         </p>

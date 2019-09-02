@@ -2,11 +2,12 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Log Viewer</div>
-                    <div class="panel-body">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">Log Viewer)</div>
+
+                    <div class="card-body">
                         <p>
                             Last Modified: {{ $last_modified }}
                         </p>
@@ -25,17 +26,17 @@
                             <tbody>
                             @foreach($log_entries as $log)
                                 @if($log->result == 'success')
-                                    <tr class="success">
+                                    <tr class="table-success">
                                 @else
-                                    <tr class="danger">
+                                    <tr class="table-danger">
                                 @endif
                                 <td>{{ $log->timestamp }}</td>
                                 <td>{{ $log->member->irc_name }}</td>
                                 <td>
                                     @if($log->result == 'success')
-                                        <span class="glyphicon glyphicon-plus-sign"></span>
+                                        <i class="fas fa-plus"></i>
                                     @else
-                                        <span class="glyphicon glyphicon-minus-sign"></span>
+                                        <i class="fas fa-minus"></i>
                                     @endif
                                 </td>
                             </tr>
