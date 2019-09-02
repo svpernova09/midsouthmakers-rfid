@@ -6,7 +6,14 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Log Viewer</div>
+
                     <div class="card-body">
+                        <p>
+                            Last Modified: {{ $last_modified }}
+                        </p>
+                        <p>
+                            Logs are synced here every hour.
+                        </p>
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
