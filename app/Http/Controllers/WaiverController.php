@@ -22,7 +22,7 @@ class WaiverController extends Controller
 
     public function admin()
     {
-        $waivers = DB::table('waivers')->paginate(25);
+        $waivers = Waiver::all();
 
         return view('waivers.admin')->with('waivers', $waivers);
     }

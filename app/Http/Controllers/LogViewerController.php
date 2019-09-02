@@ -13,7 +13,8 @@ class LogViewerController extends Controller
     {
         $log_entries = LoginAttempt::with('member')
                                    ->orderBy('timestamp', 'desc')
-                                   ->paginate(25);
+                                   ->take(1000)
+                                   ->get();
 
         return view('logviewer.index')->with('log_entries', $log_entries);
     }

@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('vanilla-datatables');
 
 // var dt = require( 'datatables.net' )();
 window.Vue = require('vue');

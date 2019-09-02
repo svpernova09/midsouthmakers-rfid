@@ -9,7 +9,7 @@
 
                     <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped">
+                        <table id="users" class="table table-striped">
                             <thead>
                             <tr>
                                 <th>Name</th>
@@ -40,4 +40,17 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.css">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.js"></script>
+    <script type="application/javascript">
+        window.onload = function () {
+            var dataTable = new DataTable("#users", {
+                searchable: true
+            });
+        }
+    </script>
 @endsection

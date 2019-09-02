@@ -28,6 +28,8 @@
     "datatables.net": "^1.10.19",
     "datatables.net-dt": "^1.10.19",
     "font-awesome": "^4.7.0",
-    "signature_pad": "^1.5.3"
+    "signature_pad": "^1.5.3",
+    "vanilla-datatables": "^1.6.16",
+    "vuejs-datatable": "^1.7.0"
   }
 }

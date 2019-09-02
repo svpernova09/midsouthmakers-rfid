@@ -8,7 +8,7 @@
                     <div class="card-header">Log Viewer</div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table id="logviewer" class="table table-striped">
                                 <thead>
                                 <tr>
                                     <th>Date</th>
@@ -40,10 +40,22 @@
                                         @endforeach
                                 </tbody>
                             </table>
-                            {{ $log_entries->links() }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+@endsection
+
+@section('scripts')
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.css">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.js"></script>
+    <script type="application/javascript">
+        window.onload = function () {
+            var dataTable = new DataTable("#logviewer", {
+                searchable: true
+            });
+        }
+    </script>
 @endsection

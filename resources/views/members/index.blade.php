@@ -23,8 +23,8 @@
                                 <th>Spoken Name</th>
                                 <th>Admin</th>
                                 <th>Active</th>
-                                <th>Date Created</th>
-                                <th>Last Login</th>
+                                <th data-type="date" data-format="YYYY/MM/DD">Date Created</th>
+                                <th data-type="date" data-format="YYYY/MM/DD">Last Login</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -74,4 +74,21 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.css">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.js"></script>
+    <script type="application/javascript">
+        window.onload = function () {
+            var dataTable = new DataTable("#members", {
+                searchable: true,
+                columns: [
+
+                    // Set the third column as datetime string matching the format "DD/MM/YYY"
+
+                ]
+            });
+        }
+    </script>
 @endsection
