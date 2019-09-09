@@ -66,7 +66,7 @@
                                     <a class="dropdown-item" href="{{ url('/users') }}">Users</a>
                                     <a class="dropdown-item" href="{{ url('/waivers/admin') }}">Waivers</a>
                                 @endif
-                                <a class="dropdown-item" href="{{ url('/member-connect') }}">Member Connect</a>
+                                <a class="dropdown-item" href="{{ url('/member-connect') }}">Attach Key</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

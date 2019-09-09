@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Member Connect</div>
+                    <div class="card-header">Attach Key</div>
 
                     <div class="card-body">
                     Connect your website account with a RFID Door Token
