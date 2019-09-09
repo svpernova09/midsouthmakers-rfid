@@ -19,7 +19,7 @@
                                     <th>Admin</th>
                                     <th>Active</th>
                                     <th>Date Created</th>
-                                    <th>Last Login</th>
+{{--                                    <th>Last Login</th>--}}
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -42,9 +42,9 @@
                                         </td>
                                         <td>{{ $member->date_created }}</td>
 
-                                        @if($member->login_attemps)
-                                            <td>{{ $member->last_login_record }}</td>
-                                        @endif
+{{--                                        @if($member->last_login_record)--}}
+{{--                                            <td>{{ $member->last_login_record }}</td>--}}
+{{--                                        @endif--}}
                                     </tr>
                                 @endforeach
                                 </tbody>
