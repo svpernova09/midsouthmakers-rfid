@@ -8,7 +8,7 @@ use App\Member;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class MemberController extends Controller
 {
@@ -68,7 +68,7 @@ class MemberController extends Controller
         $member->spoken_name = $request->spoken_name;
         $member->admin = $request->admin;
         $member->active = $request->active;
-        $member->added_by = \Auth::user()->id;
+        $member->added_by = Auth::user()->id;
         $member->last_login = Carbon::now('America/Chicago');
         $member->date_created = Carbon::now('America/Chicago');
         $member->save();

@@ -119,9 +119,9 @@ class WaiverController extends Controller
         }
 
         $file = storage_path('waivers/' . $waiver->id . '.pdf');
-        $headers = array(
+        $headers = [
             'Content-Type: application/pdf',
-        );
+        ];
 
         return Response::download($file, 'MidsouthMakers-Waiver.pdf', $headers);
     }

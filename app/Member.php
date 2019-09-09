@@ -9,7 +9,7 @@ class Member extends Model
 {
     public function getDates()
     {
-        return array('created_at', 'updated_at', 'last_login', 'date_created');
+        return ['created_at', 'updated_at', 'last_login', 'date_created'];
     }
 
     public function user()
