@@ -27,7 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $members = Auth::user()->members;
+
+        return view('home')->with('members', $members);
     }
 
     public function memberConnect()

@@ -8,7 +8,7 @@
                     <div class="card-header">Dashboard</div>
 
                     <div class="card-body">
-                    @if(count(Auth::user()->members) > 0)
+                    @if(count($members) > 0)
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
@@ -19,11 +19,11 @@
                                     <th>Admin</th>
                                     <th>Active</th>
                                     <th>Date Created</th>
-{{--                                    <th>Last Login</th>--}}
+                                    <th>Last Login</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach(Auth::user()->members as $member)
+                                @foreach($members as $member)
                                     <tr>
                                         <td>{{ $member->key }}</td>
                                         <td>{{ $member->irc_name }}</td>
@@ -41,10 +41,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $member->date_created }}</td>
-
-{{--                                        @if($member->last_login_record)--}}
-{{--                                            <td>{{ $member->last_login_record }}</td>--}}
-{{--                                        @endif--}}
+                                        <td>{{ $member->last_login }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
