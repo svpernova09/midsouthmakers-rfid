@@ -102,4 +102,21 @@ class ApiTest extends TestCase
             ]);
     }
 
+    public function testPassportOauthScopRouteForAdminNonAdmin()
+    {
+        $user = factory(\App\User::class)->create();
+
+        $response = $this->actingAs($user, 'api')->json('GET', '/oauth/scopes', []);
+        $response->assertStatus(302);
+    }
+
+    public function testPassportOuathScopRouteForAdmin()
+    {
+        $user = factory(\App\User::class)->create();
+        $user->admin = true;
+        $user->save();
+
+        $response = $this->actingAs($user, 'api')->json('GET', '/oauth/scopes', []);
+        $response->assertStatus(200);
+    }
 }
