@@ -27,8 +27,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Route::group(['middleware' => ['admin']], function () {
+//        Route::group(['middleware' => ['admin']], function () {
             Passport::routes();
-        });
+//        });
     }
 }

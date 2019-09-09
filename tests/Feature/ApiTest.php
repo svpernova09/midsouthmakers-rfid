@@ -107,7 +107,7 @@ class ApiTest extends TestCase
         $user = factory(\App\User::class)->create();
 
         $response = $this->actingAs($user, 'api')->json('GET', '/oauth/scopes', []);
-        $response->assertStatus(302);
+        $response->assertStatus(200);
     }
 
     public function testPassportOuathScopRouteForAdmin()
