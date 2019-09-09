@@ -29,6 +29,6 @@ class User extends Authenticatable
     ];
 
     public function members() {
-        return $this->hasMany('\App\Member');
+        return $this->hasMany(\App\Member::class);
     }
 }
