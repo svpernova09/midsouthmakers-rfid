@@ -14,12 +14,12 @@ class Member extends Model
 
     public function user()
     {
-        return $this->belongsTo('\App\User');
+        return $this->belongsTo(\App\User::class);
     }
 
     public function logins()
     {
-        return $this->hasMany('\App\LoginAttempt', 'key', 'key');
+        return $this->hasMany(\App\LoginAttempt::class, 'key', 'key');
     }
 
     public function getLastLoginRecordAttribute()

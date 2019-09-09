@@ -8,6 +8,6 @@ class LoginAttempt extends Model
 {
     public function member()
     {
-        return $this->belongsTo('\App\Member', 'key', 'key');
+        return $this->belongsTo(\App\Member::class, 'key', 'key');
     }
 }
