@@ -24,7 +24,7 @@ class LoginAttemptRequest extends FormRequest
     public function rules()
     {
         return [
-            'key' => 'required',
+            'key' => 'required|exists:members,key',
             'timestamp' => 'required',
             'reason' => 'required|string',
             'result' => 'required|string',

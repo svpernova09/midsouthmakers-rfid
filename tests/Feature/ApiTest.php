@@ -76,20 +76,17 @@ class ApiTest extends TestCase
             'result'    => 'failure',
         ]);
 
-        $response
-            ->assertStatus(200)
-            ->assertJson([
-                'status' => true,
-            ]);
+        $response->assertStatus(422);
     }
 
     public function testLoginSuccessAttempt()
     {
         $user = factory(\App\User::class)->create();
+        $member = factory(\App\Member::class)->create();
         $user->admin = true;
         $user->save();
         $response = $this->actingAs($user, 'api')->json('POST', '/api/login-attempt', [
-            'key'       => '12314234',
+            'key'       => $member->key,
             'timestamp' => Carbon::now()->timestamp,
             'reason'    => 'success',
             'result'    => 'success',
