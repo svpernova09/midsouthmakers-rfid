@@ -41,7 +41,11 @@
                                         @endif
 
 
-                                        <td>{{ $member->key }}</td>
+                                        <td>
+                                            <a href="/members/{{ $member->key }}/alibi" target="_blank">
+                                                {{ $member->key }}
+                                            </a>
+                                        </td>
                                         <td>{{ $member->irc_name }}</td>
                                         <td>{{ $member->spoken_name }}</td>
                                         <td>

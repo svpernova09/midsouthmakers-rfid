@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MemberCreateRequest;
 use App\Http\Requests\MemberUpdateRequest;
+use App\LoginAttempt;
 use App\Member;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
@@ -74,5 +75,10 @@ class MemberController extends Controller
         $member->save();
 
         return redirect()->action('MemberController@index');
+    }
+
+    public function alibi(Request $request, $key)
+    {
+        return LoginAttempt::where('key', $key)->orderBy('timestamp', 'desc')->get();
     }
 }

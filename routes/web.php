@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/members', 'MemberController@index');
 Route::post('/members', 'MemberController@doCreate');
 Route::get('/members/create', 'MemberController@create');
+Route::get('/members/{key}/alibi', 'MemberController@alibi');
 Route::get('/members/{key}/edit', 'MemberController@edit');
 Route::post('/members/{key}', 'MemberController@update');
 Route::get('/log-viewer', 'LogViewerController@index')->middleware('admin');
