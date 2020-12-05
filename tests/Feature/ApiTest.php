@@ -12,7 +12,7 @@ class ApiTest extends TestCase
 
     public function testMembersEndpoint()
     {
-        $user = factory(\App\User::class)->create();
+        $user = \App\User::factory()->create();
         $user->admin = true;
         $user->save();
 
@@ -28,8 +28,8 @@ class ApiTest extends TestCase
 
     public function testMemberGet()
     {
-        $member = factory(Member::class)->create();
-        $user = factory(\App\User::class)->create();
+        $member = Member::factory()->create();
+        $user = \App\User::factory()->create();
         $user->admin = true;
         $user->save();
 
@@ -50,7 +50,7 @@ class ApiTest extends TestCase
 
     public function testUserGet()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $response = $this->actingAs($user, 'api')->json('GET', '/api/users/'.$user->id, []);
 
@@ -66,7 +66,7 @@ class ApiTest extends TestCase
 
     public function testLoginFailedAttempt()
     {
-        $user = factory(\App\User::class)->create();
+        $user = \App\User::factory()->create();
         $user->admin = true;
         $user->save();
         $response = $this->actingAs($user, 'api')->json('POST', '/api/login-attempt', [
@@ -81,8 +81,8 @@ class ApiTest extends TestCase
 
     public function testLoginSuccessAttempt()
     {
-        $user = factory(\App\User::class)->create();
-        $member = factory(\App\Member::class)->create();
+        $user = \App\User::factory()->create();
+        $member = \App\Member::factory()->create();
         $user->admin = true;
         $user->save();
         $response = $this->actingAs($user, 'api')->json('POST', '/api/login-attempt', [
@@ -101,7 +101,7 @@ class ApiTest extends TestCase
 
     public function testPassportOauthScopRouteForAdminNonAdmin()
     {
-        $user = factory(\App\User::class)->create();
+        $user = \App\User::factory()->create();
 
         $response = $this->actingAs($user, 'api')->json('GET', '/oauth/scopes', []);
         $response->assertStatus(200);
@@ -109,7 +109,7 @@ class ApiTest extends TestCase
 
     public function testPassportOuathScopRouteForAdmin()
     {
-        $user = factory(\App\User::class)->create();
+        $user = \App\User::factory()->create();
         $user->admin = true;
         $user->save();
 

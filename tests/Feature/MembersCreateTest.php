@@ -12,7 +12,7 @@ class MembersCreateTest extends BrowserKitTest
 
     public function testMemberCanBeCreated()
     {
-        $user = factory(User::class)->make();
+        $user = User::factory()->make();
         $user->admin = true;
         $user->save();
 
@@ -32,7 +32,7 @@ class MembersCreateTest extends BrowserKitTest
 
     public function testFieldsAreRequired()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
         $user->admin = true;
         $user->save();
 
