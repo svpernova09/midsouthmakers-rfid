@@ -1,10 +1,12 @@
 <?php
 
-namespace Database\Factories\Member;
+namespace Database\Factories;
 
+use App\Member;
 use App\Model;
 use App\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Carbon;
 
 class MemberFactory extends Factory
 {
@@ -13,7 +15,7 @@ class MemberFactory extends Factory
      *
      * @var string
      */
-    protected $model = \App\Member::class;
+    protected $model = Member::class;
 
     /**
      * Define the model's default state.
@@ -30,10 +32,11 @@ class MemberFactory extends Factory
             'spoken_name' => $this->faker->name,
             'irc_name' => $this->faker->name,
             'added_by' => $users->random()->id,
-            'date_created' => Carbon\Carbon::now(),
-            'last_login' => Carbon\Carbon::now(),
+            'date_created' => Carbon::now(),
+            'last_login' => Carbon::now(),
             'active' => 1,
             'admin' => 0,
+//            'user_id' => $users->random()->id,
         ];
     }
 }
