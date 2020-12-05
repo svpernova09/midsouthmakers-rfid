@@ -33,7 +33,7 @@ class ApiTest extends TestCase
         $user->admin = true;
         $user->save();
 
-        $response = $this->actingAs($user, 'api')->json('GET', '/api/members/' . $member->id, []);
+        $response = $this->actingAs($user, 'api')->json('GET', '/api/members/'.$member->id, []);
 
         $response
             ->assertStatus(200)
@@ -52,7 +52,7 @@ class ApiTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $response = $this->actingAs($user, 'api')->json('GET', '/api/users/' . $user->id, []);
+        $response = $this->actingAs($user, 'api')->json('GET', '/api/users/'.$user->id, []);
 
         $response
             ->assertStatus(200)

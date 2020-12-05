@@ -16,4 +16,3 @@ Route::middleware('auth:api')->get('/members', 'MemberApiController@index');
 Route::middleware('auth:api')->get('/members/{id}', 'MemberApiController@get');
 
 Route::middleware('auth:api')->get('/users/{id}', 'UserApiController@get');
-

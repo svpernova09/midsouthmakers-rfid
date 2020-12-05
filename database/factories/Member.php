@@ -10,7 +10,7 @@ $factory->define(\App\Member::class, function (Faker $faker) {
     $users = User::all();
 
     return [
-        'key' => $faker->numberBetween(0,999999),
+        'key' => $faker->numberBetween(0, 999999),
         'hash' => sha1('1111'),
         'spoken_name' => $faker->name,
         'irc_name' => $faker->name,

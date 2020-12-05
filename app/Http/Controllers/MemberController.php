@@ -27,9 +27,10 @@ class MemberController extends Controller
     {
         $member = Member::find($id);
 
-        if (!$member) {
+        if (! $member) {
             throw new \Exception('Invalid Member');
         }
+
         return view('members.edit')->with('member', $member);
     }
 
@@ -41,14 +42,13 @@ class MemberController extends Controller
         $member->admin = $request->admin;
         $member->active = $request->active;
 
-        if (isset($request->pin) && strlen($request->pin) === 4)
-        {
+        if (isset($request->pin) && strlen($request->pin) === 4) {
             $member->hash = sha1($request->pin);
         }
 
         try {
             $member->save();
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('error', $e->getMessage());
         }
 

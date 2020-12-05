@@ -1,10 +1,10 @@
 <?php
 
-use App\User;
 use App\Tests\BrowserKitTest;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
+use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class MembersCreateTest extends BrowserKitTest
 {
@@ -49,5 +49,4 @@ class MembersCreateTest extends BrowserKitTest
             ->see('The irc name field is required')
             ->see('The spoken name field is required');
     }
-
 }

@@ -39,14 +39,14 @@ class ImportRecords extends Command
     public function handle()
     {
         $users = [];
-        if (($handle = fopen(storage_path('users.csv'), "r")) !== FALSE) {
-            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+        if (($handle = fopen(storage_path('users.csv'), 'r')) !== false) {
+            while (($data = fgetcsv($handle, 1000, ',')) !== false) {
                 $users[] = $data;
             }
             fclose($handle);
         }
 
-        foreach($users as $user) {
+        foreach ($users as $user) {
             $member = new \App\Member;
             $member->key = $user[0];
             $member->hash = $user[1];

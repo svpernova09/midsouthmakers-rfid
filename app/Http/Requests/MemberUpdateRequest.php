@@ -14,7 +14,7 @@ class MemberUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return (bool)Auth::user()->admin;
+        return (bool) Auth::user()->admin;
     }
 
     /**
