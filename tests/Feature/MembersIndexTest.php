@@ -11,8 +11,8 @@ class MembersIndexTest extends BrowserKitTest
 
     public function testMembersRouteFromAdmin()
     {
-        $member = factory(App\Member::class)->create();
-        $user = factory(App\User::class)->create();
+        $member = \App\Member::factory()->create();
+        $user = \App\User::factory()->create();
         $user->admin = true;
         $user->save();
 
@@ -27,7 +27,7 @@ class MembersIndexTest extends BrowserKitTest
 
     public function testMembersRouteFromUser()
     {
-        $user = factory(App\User::class)->create();
+        $user = \App\User::factory()->create();
 
         $this->actingAs($user)
             ->visit('/members')

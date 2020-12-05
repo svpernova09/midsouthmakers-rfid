@@ -1,8 +1,10 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
-class MemberSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +13,6 @@ class MemberSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Member::class, 15)->create();
+        \App\User::factory(25)->create();
     }
 }

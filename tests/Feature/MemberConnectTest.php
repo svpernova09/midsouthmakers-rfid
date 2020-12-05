@@ -10,8 +10,8 @@ class MemberConnectTest extends BrowserKitTest
 
     public function testUserCanConnectMember()
     {
-        $user = factory(\App\User::class)->create();
-        $member = factory(\App\Member::class)->create();
+        $user = \App\User::factory()->create();
+        $member = \App\Member::factory()->create();
 
         $this->actingAs($user)
             ->visit('/member-connect')
@@ -26,7 +26,7 @@ class MemberConnectTest extends BrowserKitTest
 
     public function testFieldsAreRequired()
     {
-        $user = factory(\App\User::class)->create();
+        $user = \App\User::factory()->create();
 
         $this->actingAs($user)
             ->visit('/member-connect')
@@ -40,8 +40,8 @@ class MemberConnectTest extends BrowserKitTest
 
     public function testKeyAlreadyConnected()
     {
-        $user = factory(\App\User::class)->create();
-        $member = factory(\App\Member::class)->create();
+        $user = \App\User::factory()->create();
+        $member = \App\Member::factory()->create();
         $member->user_id = $user->id;
         $member->save();
 
@@ -59,8 +59,8 @@ class MemberConnectTest extends BrowserKitTest
 
     public function testKeyCannotBeConnect()
     {
-        $user = factory(\App\User::class)->create();
-        $member = factory(\App\Member::class)->create();
+        $user = \App\User::factory()->create();
+        $member = \App\Member::factory()->create();
 
         $this->actingAs($user)
             ->visit('/member-connect')
@@ -73,8 +73,8 @@ class MemberConnectTest extends BrowserKitTest
 
     public function testPreventBruteForce()
     {
-        $user = factory(\App\User::class)->create();
-        $member = factory(\App\Member::class)->create();
+        $user = \App\User::factory()->create();
+        $member = \App\Member::factory()->create();
 
         $this->actingAs($user)
             ->visit('/member-connect')

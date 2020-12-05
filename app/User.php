@@ -2,12 +2,15 @@
 
 namespace App;
 
+use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
+    use HasFactory;
     use HasApiTokens, Notifiable;
 
     /**
@@ -31,5 +34,10 @@ class User extends Authenticatable
     public function members()
     {
         return $this->hasMany(\App\Member::class);
+    }
+
+    protected static function newFactory()
+    {
+        return UserFactory::new();
     }
 }
