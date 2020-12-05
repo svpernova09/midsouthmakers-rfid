@@ -11,7 +11,7 @@ class UserIndexTest extends BrowserKitTest
 
     public function testMembersRouteFromAdmin()
     {
-        $user = factory(App\User::class)->create();
+        $user = \App\User::factory()->create();
         $user->admin = true;
         $user->save();
 

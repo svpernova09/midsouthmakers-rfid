@@ -10,9 +10,9 @@
 |
 */
 
-Route::middleware('auth:api')->post('/login-attempt', 'LoginAttemptController@create');
-
-Route::middleware('auth:api')->get('/members', 'MemberApiController@index');
-Route::middleware('auth:api')->get('/members/{id}', 'MemberApiController@get');
-
-Route::middleware('auth:api')->get('/users/{id}', 'UserApiController@get');
+Route::middleware(['auth:api'])->group(function () {
+    Route::post('/login-attempt', 'LoginAttemptController@create');
+    Route::get('/members', 'MemberApiController@index');
+    Route::get('/members/{id}', 'MemberApiController@get');
+    Route::get('/users/{id}', 'UserApiController@get');
+});

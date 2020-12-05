@@ -11,8 +11,8 @@ class MembersEditTest extends BrowserKitTest
 
     public function testMemberCanBeEdited()
     {
-        $member = factory(App\Member::class)->create();
-        $user = factory(App\User::class)->create();
+        $member = \App\Member::factory()->create();
+        $user = \App\User::factory()->create();
         $user->admin = true;
         $user->save();
 
@@ -31,8 +31,8 @@ class MembersEditTest extends BrowserKitTest
 
     public function testFieldsAreRequired()
     {
-        $member = factory(App\Member::class)->create();
-        $user = factory(App\User::class)->create();
+        $member = \App\Member::factory()->create();
+        $user = \App\User::factory()->create();
         $user->admin = true;
         $user->save();
 
@@ -48,8 +48,8 @@ class MembersEditTest extends BrowserKitTest
 
     public function testMemberPinCanBeEdited()
     {
-        $member = factory(App\Member::class)->create();
-        $user = factory(App\User::class)->create();
+        $member = \App\Member::factory()->create();
+        $user = \App\User::factory()->create();
         $user->admin = true;
         $user->save();
 
