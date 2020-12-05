@@ -42,7 +42,7 @@ class ParseLog extends Command
     public function handle()
     {
         $log = storage_path('rfid.log');
-        $handle = fopen($log, "r");
+        $handle = fopen($log, 'r');
         // Truncate the table
         DB::table('login_attempts')->truncate();
 

@@ -1,9 +1,9 @@
 <?php
 
 use App\Tests\BrowserKitTest;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class MembersEditTest extends BrowserKitTest
 {
@@ -17,7 +17,7 @@ class MembersEditTest extends BrowserKitTest
         $user->save();
 
         $this->actingAs($user)
-            ->visit('/members/' . $member->id . '/edit')
+            ->visit('/members/'.$member->id.'/edit')
             ->type('IRC Name', 'irc_name')
             ->type('Name', 'spoken_name')
             ->select(true, 'admin')
@@ -27,7 +27,6 @@ class MembersEditTest extends BrowserKitTest
             ->see('IRC name')
             ->see('Name')
             ->see($member->key);
-
     }
 
     public function testFieldsAreRequired()
@@ -38,11 +37,11 @@ class MembersEditTest extends BrowserKitTest
         $user->save();
 
         $this->actingAs($user)
-            ->visit('/members/' . $member->id . '/edit')
+            ->visit('/members/'.$member->id.'/edit')
             ->type('', 'irc_name')
             ->type('', 'spoken_name')
             ->press('Submit')
-            ->seePageIs('/members/' . $member->id . '/edit')
+            ->seePageIs('/members/'.$member->id.'/edit')
             ->see('The irc name field is required')
             ->see('The spoken name field is required');
     }
@@ -55,7 +54,7 @@ class MembersEditTest extends BrowserKitTest
         $user->save();
 
         $this->actingAs($user)
-             ->visit('/members/' . $member->id . '/edit')
+             ->visit('/members/'.$member->id.'/edit')
              ->type('IRC Name', 'irc_name')
              ->type('Name', 'spoken_name')
              ->type('2222', 'pin')
@@ -67,6 +66,5 @@ class MembersEditTest extends BrowserKitTest
              ->see('Name')
              ->see($member->key)
             ->assertViewMissing('error');
-
     }
 }

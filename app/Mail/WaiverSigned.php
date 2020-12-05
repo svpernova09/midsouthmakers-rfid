@@ -4,9 +4,9 @@ namespace App\Mail;
 
 use App\Waiver;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class WaiverSigned extends Mailable
 {
@@ -34,7 +34,7 @@ class WaiverSigned extends Mailable
         return $this->view('emails.waiver-signed')
             ->from('board@midsouthmakers.org')
             ->subject('Your Midsouth Makers Signed Waiver')
-            ->attach(storage_path() . '/waivers/' . $this->waiver->id . '.pdf', [
+            ->attach(storage_path().'/waivers/'.$this->waiver->id.'.pdf', [
                 'as' => 'signed-waiver.pdf',
                 'mime' => 'application/pdf',
             ]);

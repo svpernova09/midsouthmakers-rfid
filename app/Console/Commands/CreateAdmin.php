@@ -44,7 +44,6 @@ class CreateAdmin extends Command
         $user->admin = 1;
         $user->save();
 
-        $this->info($user->email . ' is now an admin');
-
+        $this->info($user->email.' is now an admin');
     }
 }

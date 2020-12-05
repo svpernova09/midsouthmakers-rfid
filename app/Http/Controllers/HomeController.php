@@ -39,7 +39,7 @@ class HomeController extends Controller
 
     public function doMemberConnect(MemberConnectRequest $request)
     {
-        $cache_key = 'user_connect_attempts_' . Auth::user()->id;
+        $cache_key = 'user_connect_attempts_'.Auth::user()->id;
         $this->checkCache($cache_key);
 
         $member = Member::where('key', $request->key)->where('hash', sha1($request->pin))->with('user')->first();
@@ -50,6 +50,7 @@ class HomeController extends Controller
 
         if ($member === null) {
             Cache::increment($cache_key);
+
             return view('users.member-connect')->withErrors('Could not connect that key.');
         }
 
@@ -61,6 +62,7 @@ class HomeController extends Controller
             $member->user_id = Auth::user()->id;
             $member->save();
             Cache::pull($cache_key, 1, 1000);
+
             return response()->redirectToAction('HomeController@index');
         }
 
@@ -71,8 +73,8 @@ class HomeController extends Controller
 
     public function checkCache($cache_key)
     {
-        Cache::remember($cache_key, 1000, function () use($cache_key) {
-            if (!Cache::has($cache_key)) {
+        Cache::remember($cache_key, 1000, function () use ($cache_key) {
+            if (! Cache::has($cache_key)) {
                 Cache::put($cache_key, '1', 1000);
             }
         });

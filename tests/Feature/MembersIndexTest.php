@@ -1,9 +1,9 @@
 <?php
 
 use App\Tests\BrowserKitTest;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class MembersIndexTest extends BrowserKitTest
 {
@@ -33,5 +33,4 @@ class MembersIndexTest extends BrowserKitTest
             ->visit('/members')
             ->seePageIs('/');
     }
-
 }

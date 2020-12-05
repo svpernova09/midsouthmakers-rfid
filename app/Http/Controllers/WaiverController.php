@@ -56,8 +56,7 @@ class WaiverController extends Controller
 
         $this->renderIndividualWaiver($waiver);
 
-        if (env('DB_USERNAME') !== 'travis')
-        {
+        if (env('DB_USERNAME') !== 'travis') {
             $this->emailWaiver($waiver);
         }
 
@@ -70,7 +69,7 @@ class WaiverController extends Controller
         $pdf->setPaper('Letter', 'portrait');
         $pdf->loadView('waivers.individual-render', $waiver);
         $output = @$pdf->output();
-        $file_name = storage_path() . '/waivers/' . $waiver->id . '.pdf';
+        $file_name = storage_path().'/waivers/'.$waiver->id.'.pdf';
         file_put_contents($file_name, $output);
     }
 
@@ -101,7 +100,7 @@ class WaiverController extends Controller
         $pdf->setPaper('Letter', 'portrait');
         $pdf->loadView('waivers.dependent-render', $waiver);
         $output = @$pdf->output();
-        $file_name = storage_path() . '/waivers/' . $waiver->id . '.pdf';
+        $file_name = storage_path().'/waivers/'.$waiver->id.'.pdf';
         file_put_contents($file_name, $output);
     }
 
@@ -114,11 +113,11 @@ class WaiverController extends Controller
     {
         $waiver = Waiver::find($request);
 
-        if (!$waiver) {
+        if (! $waiver) {
             throw new BadRequestHttpException('Bad Request');
         }
 
-        $file = storage_path('waivers/' . $waiver->id . '.pdf');
+        $file = storage_path('waivers/'.$waiver->id.'.pdf');
         $headers = [
             'Content-Type: application/pdf',
         ];
