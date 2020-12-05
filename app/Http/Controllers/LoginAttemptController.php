@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginAttemptRequest;
 use App\LoginAttempt;
 use App\Member;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Http\Requests\LoginAttemptRequest;
 
 class LoginAttemptController extends Controller
 {
-    public function create(LoginAttemptRequest $request) {
+    public function create(LoginAttemptRequest $request)
+    {
         $login = new \App\LoginAttempt;
         $login->key = $request->key;
         $login->timestamp = Carbon::createFromTimeStamp($request->timestamp);
         $login->reason = $request->reason;
         $login->result = $request->result;
 
-        if($request->result === 'success') {
+        if ($request->result === 'success') {
             $this->updateLastLoginForMember($login->key);
         }
 
@@ -26,7 +27,7 @@ class LoginAttemptController extends Controller
 
     private function updateLastLoginForMember($key)
     {
-        try{
+        try {
             $member = Member::where('key', $key)->firstOrFail();
 
             $member->last_login = date('Y-m-d');
@@ -34,6 +35,5 @@ class LoginAttemptController extends Controller
         } catch (\Exception $e) {
             error_log($e->getMessage());
         }
-
     }
 }

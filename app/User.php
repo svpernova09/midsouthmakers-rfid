@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
@@ -28,7 +28,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function members() {
+    public function members()
+    {
         return $this->hasMany(\App\Member::class);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Tests;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -11,7 +12,6 @@ class MemberConnectTest extends BrowserKitTest
     {
         $user = factory(\App\User::class)->create();
         $member = factory(\App\Member::class)->create();
-
 
         $this->actingAs($user)
             ->visit('/member-connect')
@@ -62,7 +62,6 @@ class MemberConnectTest extends BrowserKitTest
         $user = factory(\App\User::class)->create();
         $member = factory(\App\Member::class)->create();
 
-
         $this->actingAs($user)
             ->visit('/member-connect')
             ->type($member->key, 'key')
@@ -76,7 +75,6 @@ class MemberConnectTest extends BrowserKitTest
     {
         $user = factory(\App\User::class)->create();
         $member = factory(\App\Member::class)->create();
-
 
         $this->actingAs($user)
             ->visit('/member-connect')
