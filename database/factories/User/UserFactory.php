@@ -1,13 +1,11 @@
 <?php
 
-
-
 namespace Database\Factories\User;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Model;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-class User extends Factory
+class UserFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
