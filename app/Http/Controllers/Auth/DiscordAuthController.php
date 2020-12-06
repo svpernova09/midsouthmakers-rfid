@@ -46,6 +46,7 @@ class DiscordAuthController extends Controller
 
             throw new BadRequestHttpException('Bad Request');
         }
+        Cache::forget('discord_auth_'.$user->id);
 
         return response()->redirectToRoute('home');
     }
