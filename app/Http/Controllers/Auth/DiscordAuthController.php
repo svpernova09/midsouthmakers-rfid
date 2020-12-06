@@ -10,6 +10,6 @@ use Illuminate\Support\Facades\Request;
 class DiscordAuthController extends Controller
 {
     public function sendAuthEmail(SendDiscordAuthEmailRequest $request){
-
+        dd($request->dump());
     }
 }

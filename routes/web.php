@@ -11,12 +11,15 @@
 |
 */
 
+use App\Http\Controllers\Auth\DiscordAuthController;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
+Route::post('/authorize/discord', [DiscordAuthController::class, 'sendAuthEmail']);
 Route::get('/home', 'HomeController@index');
 Route::get('/members', 'MemberController@index');
 Route::post('/members', 'MemberController@doCreate');
