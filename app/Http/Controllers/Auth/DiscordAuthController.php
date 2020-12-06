@@ -26,6 +26,7 @@ class DiscordAuthController extends Controller
 
         Cache::add('discord_auth_'.$user->id, $user);
         Mail::to($user->email)->send(new VerifyDiscordAccount($user));
+        Log::info("Mail sent to {$user->email}");
 
         return response()->json(['ok']);
     }
@@ -35,7 +36,7 @@ class DiscordAuthController extends Controller
         $input_hash = $request->input('hash');
         $user = Auth::user();
         $cached_user = Cache::get('discord_auth_'.$user->id);
-
+        Log::info('Cached User:'.$cached_user);
         if ($input_hash === $cached_user->discord_hash)
         {
             $user->discord_id = $cached_user->author_id;
