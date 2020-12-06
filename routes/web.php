@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::post('/authorize/discord', [DiscordAuthController::class, 'sendAuthEmail']);
+Route::get('/authorize/discord/{hash}', [DiscordAuthController::class, 'attemptVerify'])->middleware('auth');
 Route::get('/home', 'HomeController@index');
 Route::get('/members', 'MemberController@index');
 Route::post('/members', 'MemberController@doCreate');

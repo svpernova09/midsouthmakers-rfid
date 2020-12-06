@@ -24,7 +24,9 @@ class SendDiscordAuthEmailRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'content' => 'required|exists:users,email',
+            'author_id' => 'required|numeric',
+            'discord_username' => 'required',
         ];
     }
 }
