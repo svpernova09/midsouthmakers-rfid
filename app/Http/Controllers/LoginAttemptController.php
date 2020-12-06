@@ -7,6 +7,7 @@ use App\LoginAttempt;
 use App\Member;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Spatie\WebhookServer\WebhookCall;
 
 class LoginAttemptController extends Controller
 {
@@ -22,6 +23,8 @@ class LoginAttemptController extends Controller
             $this->updateLastLoginForMember($login->key);
         }
 
+        $response = $this->notifyDiscord($login);
+
         return ['status' => $login->save()];
     }
 
@@ -35,5 +38,20 @@ class LoginAttemptController extends Controller
         } catch (\Exception $e) {
             error_log($e->getMessage());
         }
+    }
+
+    private function notifyDiscord($login){
+        $member = Member::where('key', $login->key)->first();
+
+        $content = "Access {$login->result} for user {$member->irc_name}";
+        return WebhookCall::create()
+                   ->url(config('services.discord.door_webhook_url'))
+                   ->payload([
+                       'username' => 'MMDoorBot',
+                       'avatar_url' => '',
+                       'content' => $content,
+                   ])
+                   ->doNotSign()
+                   ->dispatch();
     }
 }

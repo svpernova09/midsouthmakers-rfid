@@ -14,6 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/webhook', function () {
+    \Spatie\WebhookServer\WebhookCall::create()
+               ->url(config('services.discord.door_webhook_url'))
+               ->payload([
+                   'username' => 'MMDoorBot',
+                   'avatar_url' => '',
+                   'content' => 'Hello Mortals',
+               ])
+               ->doNotSign()
+               ->dispatch();
+});
 
 Auth::routes();
 
