@@ -1,0 +1,10 @@
+POST http://rfid.test/authorize/discord
+Content-Type: application/json
+
+{
+  "content": "joe@joeferguson.me",
+  "author_id": "139014781867655168",
+  "discord_username": "Svpernova09#2828"
+}
+
+###

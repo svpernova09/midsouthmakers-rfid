@@ -14,8 +14,8 @@ class AddDiscordFieldsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->date('discord_id')->nullable();
-            $table->date('discord_username')->nullable();
+            $table->text('discord_id')->nullable();
+            $table->text('discord_username')->nullable();
         });
     }
 

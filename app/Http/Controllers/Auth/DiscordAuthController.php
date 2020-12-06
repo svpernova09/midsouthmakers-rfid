@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SendDiscordAuthEmailRequest;
 use App\Mail\VerifyDiscordAccount;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -31,9 +32,8 @@ class DiscordAuthController extends Controller
         return response()->json(['ok']);
     }
 
-    public function attemptVerify(Request $request, $hash)
+    public function attemptVerify(Request $request, $input_hash)
     {
-        $input_hash = $request->input('hash');
         $user = Auth::user();
         $cached_user = Cache::get('discord_auth_'.$user->id);
         Log::info('Cached User:'.$cached_user);
@@ -43,6 +43,7 @@ class DiscordAuthController extends Controller
             $user->discord_username = $cached_user->discord_username;
             $user->save();
         } else {
+
             throw new BadRequestHttpException('Bad Request');
         }
 
