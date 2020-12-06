@@ -37,10 +37,10 @@ class DiscordAuthController extends Controller
         $user = Auth::user();
         $cached_user = Cache::get('discord_auth_'.$user->id);
         Log::info('Cached User:'.$cached_user);
-        if ($input_hash === $cached_user->discord_hash)
+        if ($input_hash === $cached_user['discord_hash'])
         {
-            $user->discord_id = $cached_user->author_id;
-            $user->discord_username = $cached_user->discord_username;
+            $user->discord_id = $cached_user['author_id'];
+            $user->discord_username = $cached_user['discord_username'];
             $user->save();
         } else {
 
@@ -48,6 +48,6 @@ class DiscordAuthController extends Controller
         }
         Cache::forget('discord_auth_'.$user->id);
 
-        return response()->redirectToRoute('home');
+        return response()->json(['ok']);
     }
 }
