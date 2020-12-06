@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::post('/authorize/discord', [DiscordAuthController::class, 'sendAuthEmail']);
 Route::get('/authorize/discord/{hash}', [DiscordAuthController::class, 'attemptVerify'])->middleware('auth')->name('auth.discord.verify');
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/members', 'MemberController@index');
 Route::post('/members', 'MemberController@doCreate');
 Route::get('/members/create', 'MemberController@create');
