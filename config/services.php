@@ -37,6 +37,11 @@ return [
 
     'discord' => [
         'door_webhook_url' => env('DISCORD_DOOR_WEBHOOK'),
+        'role_change_webhook_url' => env('DISCORD_ROLE_CHANGE_WEBHOOK'),
+        'client_id' => env('DISCORD_CLIENT_ID'),
+        'client_secret' => env('DISCORD_CLIENT_SECRET'),
+        'guild_id' => env('DISCORD_GUILD_ID'),
+        'bot_token' => env('DISCORD_BOT_TOKEN'),
     ],
 
 ];
