@@ -64,7 +64,7 @@ class SyncDiscordRolesWithMembers extends Command
             "Authorization" => "Bot {$token}",
             "Content-Type" => "application/x-www-form-urlencoded",
             "Accept" => "application/json",
-        ])->put("https://discord.com/api/guilds/{$guild_id}/members/{$member->user->discord_id}/roles/784609154165768203");
+        ])->put("https://discord.com/api/guilds/{$guild_id}/members/{$member->user->discord_id}/roles/784606833456185346");
         $this->notifyDiscord($member, 'MM Member');
     }
 
@@ -77,7 +77,7 @@ class SyncDiscordRolesWithMembers extends Command
             "Authorization" => "Bot {$token}",
             "Content-Type" => "application/x-www-form-urlencoded",
             "Accept" => "application/json",
-        ])->put("https://discord.com/api/guilds/{$guild_id}/members/{$member->user->discord_id}/roles/784606833456185346");
+        ])->put("https://discord.com/api/guilds/{$guild_id}/members/{$member->user->discord_id}/roles/784609154165768203");
         $this->notifyDiscord($member, 'Board Member');
     }
 
