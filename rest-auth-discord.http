@@ -1,5 +1,0 @@
-GET https://discord.com/api/guilds/784604511813500979/members
-Content-Type: application/x-www-form-urlencoded
-Authorization: Bot Nzg0NjIzNzYyMzc1OTY2NzQx.X8r_0g.xFkL2d_rD5GrWCmozQh-cxkIOu8
-Accept: application/json
-###
