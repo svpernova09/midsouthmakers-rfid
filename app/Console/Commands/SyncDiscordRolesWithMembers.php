@@ -9,6 +9,8 @@ use Spatie\WebhookServer\WebhookCall;
 
 class SyncDiscordRolesWithMembers extends Command
 {
+    public $roles;
+
     /**
      * The name and signature of the console command.
      *
@@ -31,6 +33,10 @@ class SyncDiscordRolesWithMembers extends Command
     public function __construct()
     {
         parent::__construct();
+        $this->roles = [
+            "board" => "784609154165768203",
+            "member" => "784609154165768203",
+        ];
     }
 
     /**
@@ -46,11 +52,13 @@ class SyncDiscordRolesWithMembers extends Command
         })->get();
 
         foreach($members as $member) {
-            if($member->admin){
+            $discord_user =  $this->getDiscordUser($member);
+
+            if($member->admin && !in_array($this->roles['board'], $discord_user["roles"], true)) {
                 $this->setAdminRole($member);
             }
-            if($member->active){
-                $this->setMemberRole($member);
+            if($member->active && !in_array($this->roles['member'], $discord_user["roles"], true)) {
+                $this->setMember($member);
             }
         }
     }
@@ -64,7 +72,7 @@ class SyncDiscordRolesWithMembers extends Command
             "Authorization" => "Bot {$token}",
             "Content-Type" => "application/x-www-form-urlencoded",
             "Accept" => "application/json",
-        ])->put("https://discord.com/api/guilds/{$guild_id}/members/{$member->user->discord_id}/roles/784606833456185346");
+        ])->put("https://discord.com/api/guilds/{$guild_id}/members/{$member->user->discord_id}/roles/{$this->roles['board']}");
         $this->notifyDiscord($member, 'MM Member');
     }
 
@@ -77,7 +85,7 @@ class SyncDiscordRolesWithMembers extends Command
             "Authorization" => "Bot {$token}",
             "Content-Type" => "application/x-www-form-urlencoded",
             "Accept" => "application/json",
-        ])->put("https://discord.com/api/guilds/{$guild_id}/members/{$member->user->discord_id}/roles/784609154165768203");
+        ])->put("https://discord.com/api/guilds/{$guild_id}/members/{$member->user->discord_id}/roles/{$this->roles['member']}");
         $this->notifyDiscord($member, 'Board Member');
     }
 
@@ -92,5 +100,19 @@ class SyncDiscordRolesWithMembers extends Command
                           ])
                           ->doNotSign()
                           ->dispatch();
+    }
+
+    public function getDiscordUser($member)
+    {
+        $guild_id = config('services.discord.guild_id');
+        $token = config('services.discord.bot_token');
+
+        $response = Http::withHeaders([
+            "Authorization" => "Bot {$token}",
+            "Content-Type" => "application/x-www-form-urlencoded",
+            "Accept" => "application/json",
+        ])->get("https://discord.com/api//guilds/{$guild_id}/members/{$member->user->discord_id}");
+
+        return json_decode($response->getBody()->getContents(), true);
     }
 }

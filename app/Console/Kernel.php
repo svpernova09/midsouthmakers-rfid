@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(SyncDiscordRolesWithMembers::class)->everyFiveMinutes();
+        $schedule->command(SyncDiscordRolesWithMembers::class)->everyFiveMinutes();
     }
 
     /**
