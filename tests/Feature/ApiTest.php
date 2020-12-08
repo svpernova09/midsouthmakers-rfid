@@ -113,7 +113,7 @@ class ApiTest extends TestCase
         $user->admin = true;
         $user->save();
 
-        $response = $this->actingAs($user, 'api')->json('GET', '/oauth/scopes', []);
+        $response = $this->json('GET', '/oauth/scopes', []);
         $response->assertStatus(200);
     }
 }
