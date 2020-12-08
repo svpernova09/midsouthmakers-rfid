@@ -54,16 +54,16 @@ class SyncDiscordRolesWithMembers extends Command
 
         foreach($members as $member) {
             $discord_user =  $this->getDiscordUser($member);
-            var_dump($discord_user);
-//            if($member->admin && !in_array($this->roles['board'], $discord_user["roles"], true)) {
-//                $this->setAdminRole($member);
-//            }
-            if($member->active && !in_array($this->roles['member'], $discord_user["roles"], true)) {
-//                $this->setMemberRole($member);
-                var_dump($discord_user);
+
+            if($member->admin && !in_array($this->roles['board'], $discord_user["roles"], true)) {
+                $this->setAdminRole($member);
             }
-            $this->output->writeln('Sleeping 15 seconds');
-            sleep(15);
+
+            if($member->active && !in_array($this->roles['member'], $discord_user["roles"], true)) {
+                $this->setMemberRole($member);
+            }
+//            $this->output->writeln('Sleeping 15 seconds');
+//            sleep(15);
         }
     }
 
