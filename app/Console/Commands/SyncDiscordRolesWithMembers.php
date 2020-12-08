@@ -58,7 +58,7 @@ class SyncDiscordRolesWithMembers extends Command
                 $this->setAdminRole($member);
             }
             if($member->active && !in_array($this->roles['member'], $discord_user["roles"], true)) {
-                $this->setMember($member);
+                $this->setMemberRole($member);
             }
         }
     }
