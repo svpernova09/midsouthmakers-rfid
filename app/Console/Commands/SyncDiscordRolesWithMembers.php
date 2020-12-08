@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Member;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Spatie\WebhookServer\WebhookCall;
 
@@ -53,13 +54,16 @@ class SyncDiscordRolesWithMembers extends Command
 
         foreach($members as $member) {
             $discord_user =  $this->getDiscordUser($member);
-
-            if($member->admin && !in_array($this->roles['board'], $discord_user["roles"], true)) {
-                $this->setAdminRole($member);
-            }
+            var_dump($discord_user);
+//            if($member->admin && !in_array($this->roles['board'], $discord_user["roles"], true)) {
+//                $this->setAdminRole($member);
+//            }
             if($member->active && !in_array($this->roles['member'], $discord_user["roles"], true)) {
-                $this->setMemberRole($member);
+//                $this->setMemberRole($member);
+                var_dump($discord_user);
             }
+            $this->output->writeln('Sleeping 15 seconds');
+            sleep(15);
         }
     }
 
@@ -104,15 +108,28 @@ class SyncDiscordRolesWithMembers extends Command
 
     public function getDiscordUser($member)
     {
-        $guild_id = config('services.discord.guild_id');
-        $token = config('services.discord.bot_token');
+        // Before we ask Discord check if we have cached this data yet
+        $discord_user = Cache::get('_discord_member_'.$member->user->discord_id, false);
 
-        $response = Http::withHeaders([
-            "Authorization" => "Bot {$token}",
-            "Content-Type" => "application/x-www-form-urlencoded",
-            "Accept" => "application/json",
-        ])->get("https://discord.com/api//guilds/{$guild_id}/members/{$member->user->discord_id}");
+        if(!$discord_user) {
+            $this->output->writeln('Sleep for 30 seconds to buy some Discord API time');
+            sleep(30);
 
-        return json_decode($response->getBody()->getContents(), true);
+            $guild_id = config('services.discord.guild_id');
+            $token = config('services.discord.bot_token');
+
+            $response = Http::withHeaders([
+                "Authorization" => "Bot {$token}",
+                "Content-Type" => "application/x-www-form-urlencoded",
+                "Accept" => "application/json",
+            ])->get("https://discord.com/api//guilds/{$guild_id}/members/{$member->user->discord_id}");
+
+            $discord_user = json_decode($response->getBody()->getContents(), true);
+
+            Cache::put('_discord_member_'.$member->user->discord_id, $discord_user, 86400); # cache for 24 hours
+        }
+
+        return $discord_user;
     }
+
 }

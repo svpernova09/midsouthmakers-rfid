@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\CacheDiscordInfo;
 use App\Console\Commands\CreateAdmin;
 use App\Console\Commands\ImportRecords;
 use App\Console\Commands\ParseLog;
@@ -31,6 +32,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command(SyncDiscordRolesWithMembers::class)->everyFiveMinutes();
+        $schedule->command(CacheDiscordInfo::class)->everyThreeHours();
     }
 
     /**
