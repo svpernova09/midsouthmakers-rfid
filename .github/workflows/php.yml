@@ -55,4 +55,4 @@ jobs:
 
       - name: Deploy
         run: vendor/bin/envoy run deploy
-        if: ${{ failure() }}
+        if: ${{ success() }}
