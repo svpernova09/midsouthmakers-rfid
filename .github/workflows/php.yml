@@ -59,8 +59,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           name: id_rsa # optional
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
-        if: ${{ success() }}
+        if: (${{ success() }} && github.ref == 'refs/heads/master')
 
       - name: Deploy
         run: vendor/bin/envoy run deploy
-        if: ${{ success() }}
+        if: (${{ success() }} && github.ref == 'refs/heads/master')
