@@ -60,9 +60,6 @@ jobs:
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
         if: ${{ success() }} && $GITHUB_REF == 'refs/heads/master'
 
-#      - name: Deploy
-#        run: vendor/bin/envoy run deploy
-#        if: ${{ success() }} && $GITHUB_REF == 'refs/heads/master'
       - name: Deploy
         run: echo $GITHUB_REF && echo ${{ success() }}
         if: ${{ success() }} && $GITHUB_REF == 'refs/heads/master'
