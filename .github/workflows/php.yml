@@ -38,9 +38,9 @@ jobs:
       - name: Report PHP version
         run: cp .env.example .env
 
-      - name: Install dependencies
+      - name: Install dependencies & Setup App
         run: |
-          composer install && php artisan key:generate --ansi
+          composer install && php artisan key:generate --ansi && php artisan migrate --force && php artisan db:seed --force
 
       - name: Execute tests
         run: vendor/bin/phpunit
