@@ -45,8 +45,9 @@ jobs:
             DB_PORT: ${{ job.services.mysql.ports[3306] }}
 
       - name: Execute tests
-        run: vendor/bin/phpunit && cat storage/logs/laravel.log
+        run: vendor/bin/phpunit
         env:
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
+
       - name: Cat Log
         run: cat storage/logs/laravel.log
