@@ -51,3 +51,4 @@ jobs:
 
       - name: Cat Log
         run: cat storage/logs/laravel.log
+        if: ${{ always() }}
