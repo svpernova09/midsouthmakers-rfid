@@ -61,5 +61,4 @@ jobs:
         if: ${{ success() }} && $GITHUB_REF == 'refs/heads/master'
 
       - name: Deploy
-        run: echo $GITHUB_REF && echo ${{ success() }}
-        if: ${{ success() }} && $GITHUB_REF == 'refs/heads/master'
+        run: echo $GITHUB_REF
