@@ -52,3 +52,7 @@ jobs:
       - name: Cat Log
         run: cat storage/logs/laravel.log
         if: ${{ failure() }}
+
+      - name: Deploy
+        run: vendor/bin/envoy run deploy
+        if: ${{ failure() }}
