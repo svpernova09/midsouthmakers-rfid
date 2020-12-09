@@ -58,11 +58,13 @@ jobs:
         with:
           key: ${{ secrets.SSH_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
-        if: $GITHUB_REF == 'refs/heads/master'
+        if: github.ref == 'refs/heads/master'
 
       - name: Deploy
         run: vendor/bin/envoy run deploy
-        if: $GITHUB_REF == 'refs/heads/master'
+        if: github.ref == 'refs/heads/master'
 
       - name: Ref
-        run: echo $GITHUB_REF
+        run: echo $github.ref
+      - name: Ref2
+        run: echo github.ref
