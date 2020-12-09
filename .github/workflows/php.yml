@@ -1,4 +1,4 @@
-name: PHP Composer
+name: RFID App
 on: [push, pull_request]
 jobs:
   build:

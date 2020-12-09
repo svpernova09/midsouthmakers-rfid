@@ -1,7 +1,6 @@
 # MidsouthMakers RFID
 
-[![Build Status](https://travis-ci.org/svpernova09/midsouthmakers-rfid.svg?branch=master)](https://travis-ci.org/svpernova09/midsouthmakers-rfid)
-
+![Build Status](https://github.com/svpernova09/midsouthmakers-rfid/workflows/RFID%20App/badge.svg)
 
 
 ## API Endpoints
