@@ -63,8 +63,3 @@ jobs:
       - name: Deploy
         run: vendor/bin/envoy run deploy
         if: github.ref == 'refs/heads/master'
-
-      - name: Ref
-        run: echo $github.ref
-      - name: Ref2
-        run: echo github.ref
