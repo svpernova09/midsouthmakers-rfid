@@ -53,6 +53,14 @@ jobs:
         run: cat storage/logs/laravel.log
         if: ${{ failure() }}
 
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          name: id_rsa # optional
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+        if: ${{ success() }}
+
       - name: Deploy
         run: vendor/bin/envoy run deploy
         if: ${{ success() }}
