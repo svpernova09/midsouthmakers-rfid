@@ -41,6 +41,8 @@ jobs:
       - name: Install dependencies & Setup App
         run: |
           composer install && php artisan key:generate --ansi && php artisan migrate --force && php artisan db:seed --force
+        env:
+            DB_PORT: ${{ job.services.mysql.ports[3306] }}
 
       - name: Execute tests
         run: vendor/bin/phpunit
