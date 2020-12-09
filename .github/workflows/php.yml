@@ -36,11 +36,12 @@ jobs:
           coverage: none
 
       - name: Report PHP version
-        run: php -v
+        run: cp .env.example
 
       - name: Install dependencies
         run: |
-          composer update --prefer-dist --no-interaction --no-suggest
+          composer install && php artisan key:generate --ansi
+
       - name: Execute tests
         run: vendor/bin/phpunit
         env:
