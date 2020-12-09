@@ -52,18 +52,14 @@ jobs:
       - name: Cat Log
         run: cat storage/logs/laravel.log
         if: ${{ failure() }}
-  deploy:
-    needs: build
-    runs-on: ubuntu-18.04
-    name: Deploy Application
-    steps:
+
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.SSH_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
-        if: ${{ success() }} && github.ref == 'refs/heads/master'
+        if: ${{ success() }} && $GITHUB_REF == 'refs/heads/master'
 
       - name: Deploy
         run: vendor/bin/envoy run deploy
-        if: ${{ success() }} && github.ref == 'refs/heads/master'
+        if: ${{ success() }} && $GITHUB_REF == 'refs/heads/master'
