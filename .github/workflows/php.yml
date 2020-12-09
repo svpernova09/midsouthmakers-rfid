@@ -52,7 +52,11 @@ jobs:
       - name: Cat Log
         run: cat storage/logs/laravel.log
         if: ${{ failure() }}
-
+  deploy:
+    needs: build
+    runs-on: ubuntu-18.04
+    name: Deploy Application
+    steps:
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
         with:
