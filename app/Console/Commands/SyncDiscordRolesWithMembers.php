@@ -36,7 +36,7 @@ class SyncDiscordRolesWithMembers extends Command
         parent::__construct();
         $this->roles = [
             "board" => "784609154165768203",
-            "member" => "784609154165768203",
+            "member" => "784606833456185346",
         ];
     }
 
