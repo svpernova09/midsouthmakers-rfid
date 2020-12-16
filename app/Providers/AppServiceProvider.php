@@ -19,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
         // https://laracasts.com/discuss/channels/general-discussion/syntax-error-or-access-violation-1071-specified-key-was-too-long
         Schema::defaultStringLength(191);
         Member::observe(MemberObserver::class);
+        if ($this->app->isLocal()) {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
     }
 
     /**

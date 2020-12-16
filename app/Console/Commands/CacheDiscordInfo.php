@@ -42,16 +42,59 @@ class CacheDiscordInfo extends Command
         $guild_id = config('services.discord.guild_id');
         $token = config('services.discord.bot_token');
 
-        $response = Http::withHeaders([
-            "Authorization" => "Bot {$token}",
-            "Content-Type" => "application/x-www-form-urlencoded",
-            "Accept" => "application/json",
-        ])->get("https://discord.com/api/guilds/{$guild_id}/members?limit=1000");
+        if(Cache::get('discord-x-ratelimit-reset', 1) >= 1) {
+            $this->output->writeln('Getting All Discord Members');
+            $response = Http::withHeaders([
+                "Authorization" => "Bot {$token}",
+                "Content-Type" => "application/x-www-form-urlencoded",
+                "Accept" => "application/json",
+            ])->get("https://discord.com/api/guilds/{$guild_id}/members?limit=1000");
 
-        $users = json_decode($response->getBody()->getContents(), true);
+            // Cache the rate limit headers
+            $this->handleDiscordResponseHeaders($response);
+            // decode response
+            $users = json_decode($response->getBody()->getContents(), true);
 
-        foreach($users as $user) {
-            Cache::put('_discord_member_'.$user['user']['id'], $user, 86400); # cache for 24 hours
+            foreach($users as $user) {
+                Cache::put('_discord_member_'.$user['user']['id'], $user, 86400); # cache for 24 hours
+            }
+        }
+    }
+
+    private function handleDiscordResponseHeaders($response):void
+    {
+        $headers = $response->headers();
+
+        if(array_key_exists('x-ratelimit-reset', $headers)) {
+            if(now()->timestamp < $headers['x-ratelimit-reset'][0])
+            {
+                $this->output->writeln("Caching discord-x-ratelimit-reset-timestamp to expire at {$headers['x-ratelimit-reset'][0]}");
+                // rate limit resets in the future update the cache
+                Cache::put(
+                    'discord-x-ratelimit-reset-timestamp',
+                    $headers['x-ratelimit-reset'][0],
+                    $headers['x-ratelimit-reset'][0]
+                );
+            } else {
+                $this->output->writeln('forget discord-x-ratelimit-reset-timestamp');
+                Cache::forget('discord-x-ratelimit-reset-timestamp');
+            }
+        }
+
+        if(array_key_exists('x-ratelimit-remaining', $headers)) {
+            if(now()->timestamp < $headers['x-ratelimit-reset'][0])
+            {
+                $this->output->writeln("Caching discord-x-ratelimit-reset to expire at {$headers['x-ratelimit-reset'][0]}");
+                // rate limit remaining in the future update the cache
+                Cache::put(
+                    'discord-x-ratelimit-reset',
+                    $headers['x-ratelimit-remaining'][0],
+                    $headers['x-ratelimit-reset'][0]
+                );
+            } else {
+                $this->output->writeln('forget discord-x-ratelimit-reset');
+                Cache::forget('discord-x-ratelimit-reset');
+            }
         }
     }
 }
