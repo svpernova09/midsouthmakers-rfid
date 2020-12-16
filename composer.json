@@ -25,6 +25,7 @@
         "laravel/browser-kit-testing": "^6.1",
         "laravel/envoy": "^2.4",
         "laravel/homestead": "dev-release",
+        "laravel/telescope": "^4.4",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.3.3"
@@ -72,7 +73,8 @@
     "extra": {
         "laravel": {
             "dont-discover": [
-                "barryvdh/laravel-ide-helper"
+                "barryvdh/laravel-ide-helper",
+                "laravel/telescope"
             ]
         }
     }
