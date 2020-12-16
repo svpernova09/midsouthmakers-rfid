@@ -179,7 +179,7 @@ return [
 
         Laravel\Passport\PassportServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
-
+        MarvinLabs\DiscordLogger\ServiceProvider::class
     ],
 
     /*
