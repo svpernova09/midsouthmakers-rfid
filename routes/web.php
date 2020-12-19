@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\Auth\DiscordAuthController;
+use App\Http\Controllers\FinanceController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,3 +39,7 @@ Route::get('/sign-waiver/individual', 'WaiverController@individual');
 Route::get('/sign-waiver/dependent', 'WaiverController@dependent');
 Route::get('/waivers/admin', 'WaiverController@admin')->middleware('admin');
 Route::get('/waivers/download/{waiver_id}', 'WaiverController@downloadWaiver')->middleware('admin');
+
+
+Route::get('/finance/upload', [FinanceController::class, 'showUploadForm'])->name('finance.upload')->middleware('admin');
+Route::post('/finance/upload', [FinanceController::class, 'processUploadForm'])->name('finance.post-upload')->middleware('admin');
