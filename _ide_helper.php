@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.19.0.
+ * Generated for Laravel 8.22.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3645,7 +3645,18 @@
                         return $instance->connection();
         }
                     /**
-         * Set the connection name to be used.
+         * Get the Redis connection instance that should be used to manage locks.
+         *
+         * @return \Illuminate\Redis\Connections\Connection 
+         * @static 
+         */ 
+        public static function lockConnection()
+        {
+                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        return $instance->lockConnection();
+        }
+                    /**
+         * Specify the name of the connection that should be used to store data.
          *
          * @param string $connection
          * @return void 
@@ -3655,6 +3666,18 @@
         {
                         /** @var \Illuminate\Cache\RedisStore $instance */
                         $instance->setConnection($connection);
+        }
+                    /**
+         * Specify the name of the connection that should be used to manage locks.
+         *
+         * @param string $connection
+         * @return \Illuminate\Cache\RedisStore 
+         * @static 
+         */ 
+        public static function setLockConnection($connection)
+        {
+                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        return $instance->setLockConnection($connection);
         }
                     /**
          * Get the Redis database instance.
@@ -5318,6 +5341,17 @@
         {
                         /** @var \Illuminate\Support\Testing\Fakes\EventFake $instance */
                         $instance->assertNotDispatched($event, $callback);
+        }
+                    /**
+         * Assert that no events were dispatched.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function assertNothingDispatched()
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\EventFake $instance */
+                        $instance->assertNothingDispatched();
         }
                     /**
          * Get all of the events matching a truth-test callback.
@@ -7362,7 +7396,7 @@
                     /**
          * Queue a new e-mail message for sending.
          *
-         * @param string|array $view
+         * @param \Illuminate\Contracts\Mail\Mailable|string|array $view
          * @param string|null $queue
          * @return mixed 
          * @static 
@@ -9031,7 +9065,6 @@
          *
          * @param array $proxies A list of trusted proxies, the string 'REMOTE_ADDR' will be replaced with $_SERVER['REMOTE_ADDR']
          * @param int $trustedHeaderSet A bit field of Request::HEADER_*, to set which headers to trust from your proxies
-         * @throws \InvalidArgumentException When $trustedHeaderSet is invalid
          * @static 
          */ 
         public static function setTrustedProxies($proxies, $trustedHeaderSet)
@@ -9701,7 +9734,6 @@
          *
          * @param bool $asResource If true, a resource will be returned
          * @return string|resource The request body content or a resource to read the body stream
-         * @throws \LogicException
          * @static 
          */ 
         public static function getContent($asResource = false)
